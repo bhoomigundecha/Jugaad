@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --jugaad-purple:       #5B21B6;
+  --jugaad-purple-light: #7C3AED;
+  --jugaad-purple-dark:  #2E1065;
+  --jugaad-pink:         #EC4899;
+  --jugaad-glow:         rgba(124, 58, 237, 0.5);
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  background: #0a0014;
+  color: var(--foreground);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Phone shell ───────────────────────────────────────────────── */
+.phone-shell {
+  max-width: 390px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* ── Glassmorphism ─────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* ── Glow utilities ────────────────────────────────────────────── */
+.glow-purple { box-shadow: 0 0 20px rgba(124,58,237,0.5), 0 0 40px rgba(124,58,237,0.2); }
+.glow-pink   { box-shadow: 0 0 20px rgba(236,72,153,0.5), 0 0 40px rgba(236,72,153,0.2); }
+.text-glow   { text-shadow: 0 0 20px rgba(168,85,247,0.8); }
+
+/* ── Gradient text ─────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Swipe cards ───────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes swipe-left  { to { transform: translateX(-150%) rotate(-20deg); opacity: 0; } }
+@keyframes swipe-right { to { transform: translateX(150%)  rotate(20deg);  opacity: 0; } }
+.swipe-left  { animation: swipe-left  0.35s cubic-bezier(.4,0,.2,1) forwards; }
+.swipe-right { animation: swipe-right 0.35s cubic-bezier(.4,0,.2,1) forwards; }
+
+/* ── Blob morph ────────────────────────────────────────────────── */
+@keyframes blob-morph {
+  0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%     { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%     { border-radius: 50% 60% 30% 60% / 30% 40% 70% 50%; }
+  75%     { border-radius: 40% 50% 60% 30% / 70% 30% 50% 60%; }
+}
+.blob-morph      { animation: blob-morph 4s ease-in-out infinite; }
+.blob-morph-fast { animation: blob-morph 1s ease-in-out infinite; }
+
+/* ── Waveform ──────────────────────────────────────────────────── */
+@keyframes wave-bar {
+  0%,100% { transform: scaleY(0.25); }
+  50%     { transform: scaleY(1); }
+}
+.wave-bar                   { animation: wave-bar 0.8s ease-in-out infinite; }
+.wave-bar:nth-child(1)      { animation-delay: 0s; }
+.wave-bar:nth-child(2)      { animation-delay: 0.1s; }
+.wave-bar:nth-child(3)      { animation-delay: 0.2s; }
+.wave-bar:nth-child(4)      { animation-delay: 0.15s; }
+.wave-bar:nth-child(5)      { animation-delay: 0.05s; }
+
+/* ── Mic pulse ─────────────────────────────────────────────────── */
+@keyframes mic-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(236,72,153,0.5); }
+  50%     { box-shadow: 0 0 0 18px rgba(236,72,153,0); }
+}
+.mic-pulse { animation: mic-pulse 1.2s ease-in-out infinite; }
+
+/* ── Deal flash ────────────────────────────────────────────────── */
+@keyframes deal-flash {
+  0%  { opacity: 0; transform: scale(0.85); }
+  60% { opacity: 1; transform: scale(1.04); }
+  100%{ opacity: 1; transform: scale(1);    }
+}
+.deal-flash { animation: deal-flash 0.6s cubic-bezier(.34,1.56,.64,1) forwards; }
+
+/* ── Float ─────────────────────────────────────────────────────── */
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50%     { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+/* ── Shimmer (loading skeleton) ────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
