@@ -1,10 +1,6 @@
 <div align="center">
 
-# Jugaad
-
-### Negotiate your prices
-
-**Voice-AI negotiation layer for Indian e-commerce.**
+# Jugaad: AI-powered negotiation pipeline built for Indian E-commerce
 
 [![Hackathon](https://img.shields.io/badge/Meesho-Hackathon%202026-7c3aed?style=for-the-badge)](#)
 [![Status](https://img.shields.io/badge/status-MVP%20working-success?style=for-the-badge)](#)
@@ -27,7 +23,7 @@
 Bargaining is in India's DNA.
 E-commerce killed that ritual. Fixed MRP. Take it or leave it.
 
-**Jugaad brings it back.** It's a voice-first AI negotiation layer that sits on top of any product page. Instead of one "Buy Now" button, buyers get two:
+Instead of one "Buy Now" button, buyers get two:
 
 | 🛒 Buy Now | 🗣️ Negotiate |
 |---|---|
@@ -37,7 +33,7 @@ Jugaad bargains like a real seller, anchors high, concedes slowly, never breaks 
 
 ---
 
-## 😤 The Problem
+## The Problem
 
 <table>
 <tr><td>
@@ -70,17 +66,16 @@ Buyers *wait for sales*. Inventory sits idle for weeks while vendors hope a disc
 Jugaad opens a **real-time voice WebSocket session** between the buyer and Priya, an AI sales agent with a goal, a personality, and a hard financial guardrail.
 
 ```
-🗣️  Buyer speaks Hindi, Tamil, Kannada, Bengali... (10+ languages)
-🤖  Priya negotiates — anchors at MRP, concedes strategically
-🔒  Never drops below the vendor's floor price (hard backend constraint)
-✅  Deal closes → buyer redirected to checkout at the negotiated price
-💸  UPI nudge fires at close, attacking Meesho's COD problem directly
+Buyer speaks Hindi, Tamil, Kannada, Bengali... (10+ languages)
+Jugaad negotiates: anchors at MRP, concedes strategically
+Never drops below the vendor's floor price (hard backend constraint)
+Deal closes → buyer redirected to checkout at the negotiated price
+UPI nudge fires at close, attacking Meesho's COD problem directly
 ```
 
-### 🌍 Language-first, not language-patched
+### Language-first, not language-patched
 
-Most voice AI is Hindi-or-English-only. Jugaad's language layer is **infrastructure**, powered end-to-end by **Sarvam AI's** multilingual stack (STT → LLM → TTS) in the buyer's chosen language. A buyer in Bengaluru negotiates in Kannada. A buyer in Chennai negotiates in Tamil. Same engine, no patches.
-
+Most voice AI is Hindi-or-English-only. Jugaad's language layer is **infrastructure**, powered end-to-end by **Sarvam AI's** multilingual stack (STT → LLM → TTS) in the buyer's chosen language. 
 ---
 
 ## 🎬 How It Works
@@ -195,26 +190,6 @@ sequenceDiagram
 - 🇮🇳 **Sarvam over ElevenLabs/Google TTS** because that is built natively for Indian phonetics and Devanagari cadence, not bolted on after English.
 - 🔌 **WebSocket over REST polling** — negotiation is bidirectional and live; REST would tax every exchange with 400–800ms of dead air.
 
----
-
-## 🤖 Meet Jugaad
-
-Jugaad isn't a chatbot — she's a designed persona.
-
-- 🎯 **Goal:** close at or above the vendor's floor price
-- 😊 **Personality:** warm, gently firm, light flattery, natural scarcity cues
-- 🧠 **Tactics**, selected dynamically per product:
-  - *"Yeh last piece hai"* — scarcity framing
-  - Anchor high, concede slowly
-  - Value-add over price-drop (free delivery instead of ₹ off)
-  - *"Main thoda adjust karti hun, aap bhi samjhein"* — reciprocity nudge
-  - UPI prepaid nudge right after close
-
-Her system prompt is written **entirely in Devanagari Hindi** and not Hinglish, therefore the LLM produces natural speech instead of a robotic translation when it hits TTS.
-
-**Deal detection** is signal-based: when the buyer says *haan*, *theek hai*, *pakka*, or *chalega*, Jugaad confirms and emits `DEAL_CONFIRMED:₹[price]`, which the backend intercepts to lock the price server-side.
-
----
 
 ## 🛡️ Price Intelligence & the Floor Price Guarantee
 
@@ -233,26 +208,11 @@ That single guarantee is the whole trust mechanism for seller adoption:
 - ✅ Priya's concessions are strategic, never arbitrary
 - ✅ Tighter floors on fresh stock, looser floors to clear aging inventory
 
----
 
-## 📈 Projected Impact
-
-> Modelled from Meesho's public metrics and behavioural-economics research on negotiation in Indian retail.
-
-| Metric | Current | With Jugaad | Δ |
-|---|---|---|---|
-| Cart conversion rate | ~14% | ~18% | **+23%** |
-| COD return rate | ~45% | ~28% | **−38%** |
-| Avg order value | ₹380 | ₹420 | **+11%** |
-| Avg saving per buyer | — | ₹340 | New |
-| Seller margin preserved | — | 91% of floor | Protected |
-| Buyer NPS proxy | — | — | **+31 pts** |
-
-💰 **At Meesho's scale** (140M users, ~4M daily orders), even a **1% shift** from COD to prepaid saves roughly **₹28 crore/year** in reverse-logistics costs alone.
 
 ---
 
-## 🏆 Why This Wins for Meesho
+## Why This Wins for Meesho
 
 1. **Zero behaviour change** — buyers already negotiate in real life; Jugaad just digitizes it.
 2. **Every Indian language, not just Hindi** — onboarding-time language selection, enforced end-to-end through STT → LLM → TTS.
@@ -263,20 +223,7 @@ That single guarantee is the whole trust mechanism for seller adoption:
 
 ---
 
-## 🎨 Design System
-
-| Element | Spec |
-|---|---|
-| Background | `linear-gradient(160deg, #e4d9f5, #ede6fa, #d8cdf0)` |
-| Glassmorphism | `rgba(255,255,255,0.55)` + `backdrop-filter: blur(18px)` |
-| Primary | `#7c3aed` · Dark accent `#3F2A63` |
-| Typography | Playfair Display (wordmark) + system sans (body) |
-| Product cards | White surface, segmented pill buttons (Buy Now / Negotiate) |
-| Bottom nav | Frosted glass, active tab = dark pill with purple icon |
-
----
-
-## ✅ What's Built vs 🚧 What's Stubbed
+## What's Built vs What's in the pipeline
 
 <table>
 <tr>
@@ -295,7 +242,7 @@ That single guarantee is the whole trust mechanism for seller adoption:
 </td>
 <td valign="top" width="50%">
 
-### 🚧 Stubbed for Hackathon
+### In the pipeline
 - Vendor dashboard — API live, UI shows raw data
 - Payment gateway — checkout is a UI mock
 - Auth — session-based via localStorage, no OAuth/JWT
