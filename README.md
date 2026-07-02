@@ -1,11 +1,10 @@
 <div align="center">
 
-# 🛍️ Jugaad
+# Jugaad
 
-### *Mol karo. Save karo.*
+### Negotiate your prices *
 
-**The first voice-AI negotiation layer for Indian e-commerce.**
-Built on Meesho. Powered by an AI shopkeeper named Priya.
+**Voice-AI negotiation layer for Indian e-commerce.**
 
 [![Hackathon](https://img.shields.io/badge/Meesho-Hackathon%202026-7c3aed?style=for-the-badge)](#)
 [![Status](https://img.shields.io/badge/status-MVP%20working-success?style=for-the-badge)](#)
