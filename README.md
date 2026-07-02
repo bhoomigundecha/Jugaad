@@ -2,7 +2,7 @@
 
 # Jugaad
 
-### Negotiate your prices *
+### Negotiate your prices
 
 **Voice-AI negotiation layer for Indian e-commerce.**
 
@@ -20,23 +20,20 @@
 
 ---
 
-## 🪔 What is Jugaad?
+## What is Jugaad?
 
 > *Jugaad (n.) — the Indian art of the clever, frugal fix. A workaround that just... works.*
 
-Bargaining is in India's DNA. Walk into any kirana store or street market and the script is the same:
-
-> **"Bhaiya, thoda kam nahi hoga?"**
-
+Bargaining is in India's DNA.
 E-commerce killed that ritual. Fixed MRP. Take it or leave it.
 
 **Jugaad brings it back.** It's a voice-first AI negotiation layer that sits on top of any product page. Instead of one "Buy Now" button, buyers get two:
 
 | 🛒 Buy Now | 🗣️ Negotiate |
 |---|---|
-| Pay listed price instantly | Open a live voice call with **Priya**, your AI shopkeeper |
+| Pay listed price instantly | Open a live voice call with **Jugaad**, your AI shopkeeper |
 
-Priya bargains like a real seller — anchors high, concedes slowly, never breaks the vendor's floor price — entirely in the buyer's own language.
+Jugaad bargains like a real seller, anchors high, concedes slowly, never breaks the vendor's floor price, entirely in the buyer's own language.
 
 ---
 
@@ -45,32 +42,30 @@ Priya bargains like a real seller — anchors high, concedes slowly, never break
 <table>
 <tr><td>
 
-**140M+** Indian e-commerce buyers, mostly from Tier 2/3 and rural markets, where negotiation isn't optional — it's social currency. E-commerce gives them none of it.
+**140M+** Indian e-commerce buyers, mostly from Tier 2/3 and rural markets, where negotiation isn't optional, it's social currency. E-commerce gives them none of it.
 
 </td></tr>
 </table>
 
 | Metric | Reality |
 |---|---|
-| 💳 COD order share on Meesho | **~67%** |
-| ↩️ Return rate on COD orders | **40–50%** |
-| 🗣️ #1 cited return reason | *"Price felt too high"* |
-| 🛍️ Cart abandonment (first visit) | **~72%** |
-| 🤝 Platforms offering negotiation | **0** |
+| COD order share on Meesho | **~67%** |
+| Return rate on COD orders | **40–50%** |
+| #1 cited return reason | *"Price felt too high"* |
+| Cart abandonment (first visit) | **~72%** |
+| Platforms offering negotiation | **0** |
 
-**The hidden cost:** a buyer who never felt they "won" doesn't trust the price — so they order COD just to reject it at the door. Multiply that across 4M daily orders, and you get a reverse-logistics nightmare.
-
-There's a second, sneakier problem too: buyers *wait for sales*. Inventory sits idle for weeks while vendors hope a discount event will move it — eroding margin and training buyers to never pay full price. **Negotiation collapses that wait into a single conversation, today.**
+Buyers *wait for sales*. Inventory sits idle for weeks while vendors hope a discount event will move it, eroding margin and training buyers to never pay full price. **Negotiation collapses that wait into a single conversation, today.**
 
 ### Why hasn't anyone solved this?
 
-1. 🌐 **Language barrier** — most AI shopping bots are English-only; Meesho's core users aren't.
-2. 🎙️ **No voice interface** — negotiation is spoken and emotional, not a text chatbox.
-3. 💸 **Static pricing** — no infrastructure exists for safe, per-buyer dynamic pricing.
+1. **Language barrier** — most AI shopping bots are English-only; Meesho's core users aren't.
+2. **No voice interface** — negotiation is spoken and emotional, not a text chatbox.
+3. **Static pricing** — no infrastructure exists for safe, per-buyer dynamic pricing.
 
 ---
 
-## 💡 The Solution
+## The Solution
 
 Jugaad opens a **real-time voice WebSocket session** between the buyer and Priya, an AI sales agent with a goal, a personality, and a hard financial guardrail.
 
@@ -96,11 +91,11 @@ sequenceDiagram
     participant F as 💻 Frontend
     participant W as 🔌 WebSocket
     participant S as 🎙️ Sarvam STT/TTS
-    participant P as 🤖 Priya (Groq Llama 3.3)
+    participant P as 🤖 Jugaad (Groq Llama 3.3)
 
     B->>F: Browses product → taps "Negotiate"
     F->>W: Opens session
-    W->>P: Priya greets buyer in their language
+    W->>P: Jugaad greets buyer in their language
     B->>F: Speaks (mic captured via MediaRecorder)
     F->>W: Streams audio (base64)
     W->>S: Speech → text (Saarika v2)
@@ -123,7 +118,7 @@ sequenceDiagram
 │                                                                │
 │   /home            Product discovery, categories, banner      │
 │   /product/[id]    Product detail · Buy Now / Negotiate       │
-│   /negotiate/[s]   Live voice negotiation UI                  │
+│   /negotiate/[s]   Live voice negotiation UI (websocket)                 │
 │   /checkout        Deal confirmation                          │
 │                                                                │
 │   JugaadWordmark · BottomNav · ProductCard · ProductCarousel  │
@@ -196,15 +191,15 @@ sequenceDiagram
 
 ### Why these, specifically
 
-- ⚡ **Groq over OpenAI/Anthropic** — sub-200ms token generation on Groq's LPU hardware. A 3-second "thinking" pause kills the live-negotiation feel.
-- 🇮🇳 **Sarvam over ElevenLabs/Google TTS** — built natively for Indian phonetics and Devanagari cadence, not bolted on after English.
+- ⚡ **Groq over OpenAI/Anthropic** because we get sub-200ms token generation on Groq's LPU hardware. A 3-second "thinking" pause kills the live-negotiation feel.
+- 🇮🇳 **Sarvam over ElevenLabs/Google TTS** because that is built natively for Indian phonetics and Devanagari cadence, not bolted on after English.
 - 🔌 **WebSocket over REST polling** — negotiation is bidirectional and live; REST would tax every exchange with 400–800ms of dead air.
 
 ---
 
-## 🤖 Meet Priya
+## 🤖 Meet Jugaad
 
-Priya isn't a chatbot — she's a designed persona.
+Jugaad isn't a chatbot — she's a designed persona.
 
 - 🎯 **Goal:** close at or above the vendor's floor price
 - 😊 **Personality:** warm, gently firm, light flattery, natural scarcity cues
@@ -215,9 +210,9 @@ Priya isn't a chatbot — she's a designed persona.
   - *"Main thoda adjust karti hun, aap bhi samjhein"* — reciprocity nudge
   - UPI prepaid nudge right after close
 
-Her system prompt is written **entirely in Devanagari Hindi** — not Hinglish — so the LLM produces natural speech instead of a robotic translation when it hits TTS.
+Her system prompt is written **entirely in Devanagari Hindi** and not Hinglish, therefore the LLM produces natural speech instead of a robotic translation when it hits TTS.
 
-**Deal detection** is signal-based: when the buyer says *haan*, *theek hai*, *pakka*, or *chalega*, Priya confirms and emits `DEAL_CONFIRMED:₹[price]`, which the backend intercepts to lock the price server-side.
+**Deal detection** is signal-based: when the buyer says *haan*, *theek hai*, *pakka*, or *chalega*, Jugaad confirms and emits `DEAL_CONFIRMED:₹[price]`, which the backend intercepts to lock the price server-side.
 
 ---
 
@@ -356,7 +351,7 @@ jugaad/
 
 ---
 
-## 🚀 Running Locally
+## Running the site
 
 ```bash
 # 🔧 Backend
@@ -365,7 +360,7 @@ pip install -r requirements.txt
 python seed.py          # seed products & vendors
 uvicorn main:app --reload
 
-# 🎨 Frontend
+# Frontend
 cd frontend
 npm install
 npm run dev
@@ -381,8 +376,7 @@ SARVAM_API_KEY=your_sarvam_key
 
 <div align="center">
 
-### Built with 🪔 at Meesho Hackathon 2026 — Team Jugaad
+### Built for Meesho Hackathon 2026 : Team Jugaad
 
-*Mol karo. Save karo.*
 
 </div>
