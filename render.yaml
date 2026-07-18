@@ -20,6 +20,10 @@ services:
       mountPath: /var/data
       sizeGB: 1
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.3
+      - key: PYTHONUNBUFFERED
+        value: "1"
       - key: GROQ_API_KEY
         sync: false
       - key: SARVAM_API_KEY

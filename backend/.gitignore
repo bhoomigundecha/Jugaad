@@ -1,9 +1,13 @@
 .env
-.env.example
 __pycache__/
 *.pyc
 
 # Raw HuggingFace dataset shards used for local seeding — too large for git
 # (single shard is 400MB+; GitHub hard-rejects any file over 100MB anyway).
 data/hf_hires/
+
+# Local dev SQLite DB — production reads from Render's persistent disk
+# (DATABASE_URL in render.yaml), never from this file. Auto-reseeds from
+# backend/data/*.json on first boot against an empty DB either way.
+jugaad.db
 
