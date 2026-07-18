@@ -1,0 +1,38 @@
+# Render Blueprint — deploys the Jugaad FastAPI + WebSocket backend.
+# The two frontends (frontend/, vendor/) are NOT deployed from this file —
+# they go to Vercel as separate projects (see the deployment runbook).
+#
+# First deploy: Render will prompt for every `sync: false` var in its
+# dashboard before the service can go live. FRONTEND_URL and ALLOWED_ORIGINS
+# depend on URLs that don't exist until the Vercel projects are deployed —
+# set them once those are up, then trigger a redeploy.
+services:
+  - type: web
+    name: jugaad-backend
+    runtime: python
+    rootDir: backend
+    plan: starter # paid, always-on — no cold starts/spin-down
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    disk:
+      name: jugaad-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: NEBIUS_API_KEY
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_ENDPOINT_URI
+        sync: false
+      - key: DATABASE_URL
+        value: sqlite:////var/data/jugaad.db
+      - key: FRONTEND_URL
+        sync: false # set to the deployed buyer frontend's URL, e.g. https://jugaad.vercel.app
+      - key: ALLOWED_ORIGINS
+        sync: false # comma-separated: buyer + vendor frontend URLs, e.g. https://jugaad.vercel.app,https://jugaad-vendor.vercel.app

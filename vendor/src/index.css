@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #7c3aed;
+  --color-brand-dark: #3F2A63;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+/* ── Light theme tokens ── */
+:root {
+  --bg-base: #d8ccee;
+  --bg-gradient: linear-gradient(160deg, #cfc3e8 0%, #d8cdf0 50%, #c8bde4 100%);
+  --orb-1: rgba(124, 58, 237, 0.28);
+  --orb-2: rgba(168, 85, 247, 0.22);
+  --orb-3: rgba(109, 40, 217, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-border: rgba(124, 58, 237, 0.18);
+  --card-shadow: 0 8px 32px -8px rgba(124, 58, 237, 0.22);
+  --text-primary: #1e0f36;
+  --text-secondary: #5b3d9e;
+  --text-muted: rgba(50, 28, 90, 0.5);
+  --nav-bg: rgba(220, 210, 245, 0.9);
+  --nav-border: rgba(124, 58, 237, 0.2);
+  --stats-bg: linear-gradient(135deg, rgba(124,58,237,0.3) 0%, rgba(79,32,160,0.3) 100%);
+  --stats-border: rgba(124, 58, 237, 0.4);
+  --pill-bg: rgba(124, 58, 237, 0.15);
+  --pill-border: rgba(124, 58, 237, 0.35);
+  --pill-text: #5b21b6;
+  --toggle-off: rgba(124, 58, 237, 0.22);
+  --header-btn-bg: rgba(255, 255, 255, 0.6);
+  --header-btn-border: rgba(124, 58, 237, 0.22);
+  --floor-bg: linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(79,32,160,0.18) 100%);
+  --floor-border: rgba(124,58,237,0.38);
+  --track-bg: rgba(124, 58, 237, 0.18);
+  --wordmark-from: #1e0f36;
+  --wordmark-mid: #4c1d95;
+  --wordmark-to: #7c3aed;
+  --vendor-dot: #7c3aed;
+  --vendor-text: #5b21b6;
+}
+
+/* ── Dark theme tokens ── */
+[data-theme="dark"] {
+  --bg-base: #0f0a1a;
+  --bg-gradient: linear-gradient(160deg, #0f0a1a 0%, #150d2b 50%, #0d0820 100%);
+  --orb-1: rgba(124, 58, 237, 0.22);
+  --orb-2: rgba(168, 85, 247, 0.15);
+  --orb-3: rgba(79, 32, 160, 0.25);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.09);
+  --card-shadow: 0 8px 32px -8px rgba(0,0,0,0.4);
+  --text-primary: #f0e6ff;
+  --text-secondary: #c4b5fd;
+  --text-muted: rgba(196, 181, 253, 0.4);
+  --nav-bg: rgba(15, 10, 26, 0.88);
+  --nav-border: rgba(255, 255, 255, 0.07);
+  --stats-bg: linear-gradient(135deg, rgba(124,58,237,0.35) 0%, rgba(79,32,160,0.35) 100%);
+  --stats-border: rgba(124, 58, 237, 0.4);
+  --pill-bg: rgba(124, 58, 237, 0.2);
+  --pill-border: rgba(124, 58, 237, 0.3);
+  --pill-text: #c4b5fd;
+  --toggle-off: rgba(255, 255, 255, 0.12);
+  --header-btn-bg: rgba(255, 255, 255, 0.07);
+  --header-btn-border: rgba(255, 255, 255, 0.12);
+  --floor-bg: linear-gradient(135deg, rgba(124,58,237,0.18) 0%, rgba(79,32,160,0.18) 100%);
+  --floor-border: rgba(124,58,237,0.3);
+  --track-bg: rgba(255, 255, 255, 0.08);
+  --wordmark-from: #ffffff;
+  --wordmark-mid: #d4beff;
+  --wordmark-to: #9f67ff;
+  --vendor-dot: #a78bfa;
+  --vendor-text: #a78bfa;
+}
+
+@layer base {
+  * { -webkit-tap-highlight-color: transparent; }
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: #000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  #root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    background: #000;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.glow-sm { box-shadow: 0 0 16px rgba(124, 58, 237, 0.4); }
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+.pulse-dot { animation: pulse-glow 2s ease-in-out infinite; }
+
+@keyframes skeleton-sweep {
+  0%   { background-position: -400% 0; }
+  100% { background-position: 400% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--pill-bg) 25%, var(--card-border) 50%, var(--pill-bg) 75%);
+  background-size: 400% 100%;
+  animation: skeleton-sweep 1.6s ease-in-out infinite;
+}
