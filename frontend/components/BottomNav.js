@@ -1,11 +1,11 @@
 "use client";
 import { useRouter, usePathname } from "next/navigation";
-import { Home, Search, Heart, ShoppingBag, User } from "lucide-react";
+import { Home, Search, Mic, ShoppingBag, User } from "lucide-react";
 
 const tabs = [
   { icon: Home,        label: "Home",    href: "/home" },
   { icon: Search,      label: "Search",  href: "/search" },
-  { icon: Heart,       label: "Saved",   href: "/saved" },
+  { icon: Mic,         label: "Voice",   href: "/voice" },
   { icon: ShoppingBag, label: "Cart",    href: "/cart" },
   { icon: User,        label: "Profile", href: "/profile" },
 ];

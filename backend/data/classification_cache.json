@@ -1,0 +1,630 @@
+{
+  "Bandhani Silk Dupatta": {
+    "gender": "Women",
+    "sub_category": "Dupatta"
+  },
+  "Lucknowi Chikankari Kurti": {
+    "gender": "Women",
+    "sub_category": "Kurta"
+  },
+  "Jaipuri Block Print Bedsheet Set": {
+    "gender": "Unisex",
+    "sub_category": "Bedsheet Set"
+  },
+  "Oxidised Silver Jhumka Set": {
+    "gender": "Women",
+    "sub_category": "Earrings"
+  },
+  "Nabaiji Swimming Goggles Blue Black": {
+    "gender": "Unisex",
+    "sub_category": "Swimwear"
+  },
+  "Titan Men White Dial Watch": {
+    "gender": "Men",
+    "sub_category": "Watches"
+  },
+  "Lee Cooper Men Black Formal Shoes": {
+    "gender": "Men",
+    "sub_category": "Formal Shoes"
+  },
+  "Gini and Jony Boys United White T-shirt": {
+    "gender": "Kids",
+    "sub_category": "Tshirts"
+  },
+  "Timex Men Sliver Dial Chronograph Watch": {
+    "gender": "Men",
+    "sub_category": "Watches"
+  },
+  "Enamor Women Beige Regular-Rise Brief": {
+    "gender": "Women",
+    "sub_category": "Briefs"
+  },
+  "Clarks Men Brown Leather Sandals": {
+    "gender": "Men",
+    "sub_category": "Sandals"
+  },
+  "ADIDAS Kids Boys Duramo Synthetic Black Sports Shoes": {
+    "gender": "Kids",
+    "sub_category": "Sports Shoes"
+  },
+  "Catwalk Women Casual Black Heels": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "Fabindia Maroon Printed Saree": {
+    "gender": "Women",
+    "sub_category": "Sarees"
+  },
+  "Nike Unisex Classic Base Blue Backpack": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Bwitch  Navy Blue  Nightdress": {
+    "gender": "Women",
+    "sub_category": "Nightdress"
+  },
+  "Carlton London Women Stylish Black Flats": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "American Tourister Unisex Black Backpack": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Arrow Men Formal Black Shoe": {
+    "gender": "Men",
+    "sub_category": "Formal Shoes"
+  },
+  "SDL by Sweet Dreams Men Black & Grey Pyjama Set": {
+    "gender": "Men",
+    "sub_category": "Night suits"
+  },
+  "Nike Men Brazil Yellow Tshirts": {
+    "gender": "Men",
+    "sub_category": "Tshirts"
+  },
+  "Inkfruit Men Night Wolf T-shirt": {
+    "gender": "Men",
+    "sub_category": "Tshirts"
+  },
+  "Barbie Purple Girls Slippers": {
+    "gender": "Kids",
+    "sub_category": "Sandals"
+  },
+  "Spykar Men Black and white Check Shirt": {
+    "gender": "Men",
+    "sub_category": "Shirts"
+  },
+  "Myntra Women Multi Coloured Printed Top": {
+    "gender": "Women",
+    "sub_category": "Tops"
+  },
+  "Puma Unisex Deck Black Backpacks": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Puma Unisex Lo Punk Black Yellow Shoe": {
+    "gender": "Unisex",
+    "sub_category": "Casual Shoes"
+  },
+  "Palm Tree Boys Washed Blue 3/4 Length Pants": {
+    "gender": "Kids",
+    "sub_category": "Capris"
+  },
+  "Portia Women Green Sandals": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "Revv Men Steel Bracelet": {
+    "gender": "Men",
+    "sub_category": "Bracelet"
+  },
+  "ADIDAS Unisex Ecb Black Backpack": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Park Avenue Men Black Sunglasses": {
+    "gender": "Men",
+    "sub_category": "Sunglasses"
+  },
+  "Playboy Men Black Shoes": {
+    "gender": "Men",
+    "sub_category": "Casual Shoes"
+  },
+  "Scullers Men  Green Check Shirt": {
+    "gender": "Men",
+    "sub_category": "Shirts"
+  },
+  "Tokyo Talkies Women Yellow Top": {
+    "gender": "Women",
+    "sub_category": "Tops"
+  },
+  "Prafful Multi Coloured Sari": {
+    "gender": "Women",
+    "sub_category": "Sarees"
+  },
+  "Fastrack Women Grey Dial Watch": {
+    "gender": "Women",
+    "sub_category": "Watches"
+  },
+  "Wildcraft Unisex Black & Red Messenger Bag": {
+    "gender": "Unisex",
+    "sub_category": "Messenger Bag"
+  },
+  "Doodle Boy's Athletic 77 Dept Yellow Teen Kidswear": {
+    "gender": "Kids",
+    "sub_category": "Tshirts"
+  },
+  "Q&Q Kids Girls Blue Analog Watch": {
+    "gender": "Kids",
+    "sub_category": "Watches"
+  },
+  "Baggit Women Hood Dabang Black Belt": {
+    "gender": "Women",
+    "sub_category": "Belts"
+  },
+  "Lotto Unisex Canvas Pink Shoe": {
+    "gender": "Unisex",
+    "sub_category": "Casual Shoes"
+  },
+  "Rockport Women Jeanie Oneband Brown Flats": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "French Connection Men White & Purple Check Shirt": {
+    "gender": "Men",
+    "sub_category": "Shirts"
+  },
+  "Rreverie Women Silver Pendant": {
+    "gender": "Women",
+    "sub_category": "Pendant"
+  },
+  "Tantra Kid's Cartoon Pink Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "ADIDAS Kids Adispeed Black Sports Shoes": {
+    "gender": "Unisex",
+    "sub_category": "Sports Shoes"
+  },
+  "Baggit Women Naughty Lips Teal Handbag": {
+    "gender": "Women",
+    "sub_category": "Handbags"
+  },
+  "Levis Kids Blue Solid Jean": {
+    "gender": "Unisex",
+    "sub_category": "Jeans"
+  },
+  "Tantra Unisex Printed Orange Tshirts": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Gas Men Olive Swansea Shoes": {
+    "gender": "Men",
+    "sub_category": "Casual Shoes"
+  },
+  "Nike Men Solid Navy Blue Jerseys": {
+    "gender": "Men",
+    "sub_category": "Tshirts"
+  },
+  "Tokyo Talkies Women Printed Red T-shirt": {
+    "gender": "Women",
+    "sub_category": "Tshirts"
+  },
+  "Femella Women Purple T-Shirt": {
+    "gender": "Women",
+    "sub_category": "Tshirts"
+  },
+  "Converse Unisex Green Flip Flops": {
+    "gender": "Unisex",
+    "sub_category": "Flip Flops"
+  },
+  "ADIDAS Men's Black Shoe": {
+    "gender": "Men",
+    "sub_category": "Casual Shoes"
+  },
+  "Vans Unisex  Era Black Casual Shoes": {
+    "gender": "Unisex",
+    "sub_category": "Casual Shoes"
+  },
+  "Tantra Kid's Unisex Cute Mom Red Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Puma Unisex Pink Backpack": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Doodle Girls Blue Printed Dress": {
+    "gender": "Kids",
+    "sub_category": "Dresses"
+  },
+  "Reid & Taylor Men Solid Blue Socks": {
+    "gender": "Men",
+    "sub_category": "Socks"
+  },
+  "Skagen Men Black Dial Watch": {
+    "gender": "Men",
+    "sub_category": "Watches"
+  },
+  "Fastrack Women Black Dial Watch": {
+    "gender": "Women",
+    "sub_category": "Watches"
+  },
+  "United Colors of Benetton Men Stripes Grey Tshirt": {
+    "gender": "Men",
+    "sub_category": "Tshirts"
+  },
+  "Ben 10 Boys Navy Blue Slippers": {
+    "gender": "Kids",
+    "sub_category": "Flip Flops"
+  },
+  "Tantra Unisex Printed Blue Tshirts": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Catwalk Women Beige Shoes": {
+    "gender": "Women",
+    "sub_category": "Flats"
+  },
+  "Q&Q Men Black Dial Watch": {
+    "gender": "Men",
+    "sub_category": "Watches"
+  },
+  "Enroute Teens Orange Sandals": {
+    "gender": "Kids",
+    "sub_category": "Sandals"
+  },
+  "Helix Women Black Watch": {
+    "gender": "Women",
+    "sub_category": "Watches"
+  },
+  "Lino Perros Women Olive Handbag": {
+    "gender": "Women",
+    "sub_category": "Handbags"
+  },
+  "Disney Kids-Unisex Diamond Red Sandals": {
+    "gender": "Unisex",
+    "sub_category": "Sandals"
+  },
+  "Tantra Kid's Unisex Free Spirit Turquoise Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Paridhan Women Pink Handbag": {
+    "gender": "Women",
+    "sub_category": "Handbags"
+  },
+  "Catwalk Women Red Flats": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "Lotto Unisex Canvas Black Check Shoe": {
+    "gender": "Unisex",
+    "sub_category": "Casual Shoes"
+  },
+  "Wildcraft Unisex Blue Backpack": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Doodle Kids Boys Airfeild Red T-Shirt": {
+    "gender": "Kids",
+    "sub_category": "Tshirts"
+  },
+  "Chromozome Men Navy Blue Briefs": {
+    "gender": "Men",
+    "sub_category": "Briefs"
+  },
+  "Puma Men Black Floater": {
+    "gender": "Men",
+    "sub_category": "Sandals"
+  },
+  "Arrow Men Brown Leather Wallet": {
+    "gender": "Men",
+    "sub_category": "Wallets"
+  },
+  "Tantra Kid's Unisex Got It Pink Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Reebok Men trackpant- male Track Pants": {
+    "gender": "Men",
+    "sub_category": "Track Pants"
+  },
+  "Enroute Kids Girls Pink Sandals": {
+    "gender": "Kids",
+    "sub_category": "Sandals"
+  },
+  "Alma Women Black Kurta": {
+    "gender": "Women",
+    "sub_category": "Kurtas"
+  },
+  "109F Red & White A-Line Dress": {
+    "gender": "Women",
+    "sub_category": "Dresses"
+  },
+  "Yelloe Off White Fur Zip Clutch": {
+    "gender": "Women",
+    "sub_category": "Clutches"
+  },
+  "Mr.Men Men's Charcoal Polo T-shirt": {
+    "gender": "Men",
+    "sub_category": "Tshirts"
+  },
+  "Enroute Teens Brown Sandals": {
+    "gender": "Kids",
+    "sub_category": "Sandals"
+  },
+  "Van Heusen Unisex Brown Sunglasses": {
+    "gender": "Unisex",
+    "sub_category": "Sunglasses"
+  },
+  "Q&Q Kids Girls Pink Digital Watch": {
+    "gender": "Kids",
+    "sub_category": "Watches"
+  },
+  "Rockport Women Beige Flats": {
+    "gender": "Women",
+    "sub_category": "Flats"
+  },
+  "Bulchee Men Black & Brown Reversible Belt": {
+    "gender": "Men",
+    "sub_category": "Belts"
+  },
+  "Enroute Women Casual Gold Peep Toes": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "Puma Men Olive T-shirt": {
+    "gender": "Men",
+    "sub_category": "Tshirts"
+  },
+  "iPanema Women Pink Flip Flops": {
+    "gender": "Women",
+    "sub_category": "Flip Flops"
+  },
+  "Lotto Unisex Brooklyn Black Shoe": {
+    "gender": "Unisex",
+    "sub_category": "Sports Shoes"
+  },
+  "Gini and Jony Girls Knit White Top": {
+    "gender": "Kids",
+    "sub_category": "Tops"
+  },
+  "Tantra Kid's Unisex Kya Boss Red Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Numero Uno Men Navy Blue Shoes": {
+    "gender": "Men",
+    "sub_category": "Casual Shoes"
+  },
+  "ADIDAS Originals Boys White Pack of 3 Casual Socks": {
+    "gender": "Kids",
+    "sub_category": "Socks"
+  },
+  "Q&Q Kids Girls White Dial Analog Watch": {
+    "gender": "Kids",
+    "sub_category": "Watches"
+  },
+  "Fila Men Syncro White Shoes": {
+    "gender": "Men",
+    "sub_category": "Casual Shoes"
+  },
+  "Enroute Teens Black Sandals": {
+    "gender": "Kids",
+    "sub_category": "Sandals"
+  },
+  "Puma Men Black Aquil II Sports Shoes": {
+    "gender": "Men",
+    "sub_category": "Sports Shoes"
+  },
+  "Wildcraft Unisex Grey & Black Backpack": {
+    "gender": "Unisex",
+    "sub_category": "Backpacks"
+  },
+  "Doodle Girl's Hippie Chic Orange Teen Kidswear": {
+    "gender": "Kids",
+    "sub_category": "Tshirts"
+  },
+  "Gini and Jony Girls Pink Top": {
+    "gender": "Kids",
+    "sub_category": "Tops"
+  },
+  "United Colors of Benetton Boys Khaki Shorts": {
+    "gender": "Kids",
+    "sub_category": "Shorts"
+  },
+  "Converse Unisex Black Flip Flops": {
+    "gender": "Unisex",
+    "sub_category": "Flip Flops"
+  },
+  "Vans Unisex Authentic Lo Pro Brown Casual Shoes": {
+    "gender": "Unisex",
+    "sub_category": "Casual Shoes"
+  },
+  "Lotto Unisex Canvas Black Grey Shoe": {
+    "gender": "Unisex",
+    "sub_category": "Casual Shoes"
+  },
+  "Roxy Women Black Cap": {
+    "gender": "Women",
+    "sub_category": "Caps"
+  },
+  "Jealous 21 Women Check Navy Blue Top": {
+    "gender": "Women",
+    "sub_category": "Tops"
+  },
+  "Crocs Kids Navy Blue Clogs": {
+    "gender": "Unisex",
+    "sub_category": "Flip Flops"
+  },
+  "Nike Unisex U Black Caps": {
+    "gender": "Unisex",
+    "sub_category": "Caps"
+  },
+  "Catwalk Women Lifestyle Gold Toned Ballerinas": {
+    "gender": "Women",
+    "sub_category": "Flats"
+  },
+  "Gini and Jony Boys Washed Blue Jeans": {
+    "gender": "Kids",
+    "sub_category": "Jeans"
+  },
+  "CASIO G-Shock Men White Analogue & Digital Watch G274": {
+    "gender": "Men",
+    "sub_category": "Watches"
+  },
+  "American Tourister Men Brown Slim Fold Wallet": {
+    "gender": "Men",
+    "sub_category": "Wallets"
+  },
+  "Nike Women Track Tote Pink Handbag": {
+    "gender": "Women",
+    "sub_category": "Handbags"
+  },
+  "Nike Boys Basketball Red Shorts": {
+    "gender": "Kids",
+    "sub_category": "Shorts"
+  },
+  "Tantra Kid's Unisex Genius Red Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Marvel Boys White Shoes": {
+    "gender": "Kids",
+    "sub_category": "Casual Shoes"
+  },
+  "Lucera Women Silver Ring": {
+    "gender": "Women",
+    "sub_category": "Ring"
+  },
+  "Enroute Boys Grey Casual Shoes": {
+    "gender": "Kids",
+    "sub_category": "Casual Shoes"
+  },
+  "Timberland Men Light Brown Casual Shoes": {
+    "gender": "Men",
+    "sub_category": "Casual Shoes"
+  },
+  "Marvel Boys Red Light Spidey Shoes": {
+    "gender": "Kids",
+    "sub_category": "Casual Shoes"
+  },
+  "Madagascar3 Boys Red Printed T-Shirt": {
+    "gender": "Kids",
+    "sub_category": "Tshirts"
+  },
+  "Enroute Women Coral Shoes": {
+    "gender": "Women",
+    "sub_category": "Flats"
+  },
+  "Palm Tree Kids Girls Printed White Tops": {
+    "gender": "Women",
+    "sub_category": "Tops"
+  },
+  "Timberland Unisex Rubber Sole Brush Shoe Accessories": {
+    "gender": "Unisex",
+    "sub_category": "Shoe Accessories"
+  },
+  "Rocia Women Black Heels": {
+    "gender": "Women",
+    "sub_category": "Heels"
+  },
+  "Tantra Kid's Unisex Papa's Joy Green Kidswear": {
+    "gender": "Unisex",
+    "sub_category": "Tshirts"
+  },
+  "Van Heusen Unisex Sunglasses VH216-C2": {
+    "gender": "Unisex",
+    "sub_category": "Sunglasses"
+  },
+  "United Colors of Benetton Men Solid Black Wallets": {
+    "gender": "Men",
+    "sub_category": "Wallets"
+  },
+  "U.S. Polo Assn. Blue Cotton Striped T-Shirt": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "Rare Rabbit Black Regular Fit Solid Polo T-Shirt": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "The Souled Store Green Cotton Regular Fit Polo T-Shirt": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "Bewakoof Men's Black Relax T-shirt": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "WES Casuals by Westside Dark Brown Solid Slim-Fit Cotton T-Shirt": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "Puma Blue Cotton Regular Fit Polo T-Shirts": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "Louis Philippe Men's Yellow Polo T-Shirt with Collar Tipping and Branding on Sleeve": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "The Souled Store Mens Blue Relaxed Fit Printed T-Shirt": {
+    "gender": "Men",
+    "sub_category": "T-Shirt"
+  },
+  "Libas Peach Straight Fit Embroidered Kurta Sets": {
+    "gender": "Women",
+    "sub_category": "Kurta Sets"
+  },
+  "U.S. Polo Assn. Black Cotton Regular Fit Polo T-Shirt": {
+    "gender": "Women",
+    "sub_category": "T-Shirt"
+  },
+  "Libas Purple Cotton Straight Fit Floral Print Kurta": {
+    "gender": "Women",
+    "sub_category": "Kurta"
+  },
+  "Libas Off White Abstract Kimono Sleeves A-Line Kurti": {
+    "gender": "Women",
+    "sub_category": "Kurta"
+  },
+  "GoSriKi Cream Straight Kurta With Pants & Dupatta": {
+    "gender": "Women",
+    "sub_category": "Kurta"
+  },
+  "Zuba by Westside Light Pink Floral Embroidered Cotton-Blend A-Line Kurta": {
+    "gender": "Women",
+    "sub_category": "Kurta"
+  },
+  "Cottinfab Off White & Grey Cotton Striped Shirt Dress": {
+    "gender": "Women",
+    "sub_category": "Dress"
+  },
+  "Bombay Paisley by Westside Blue Embroidered Cotton-Blend A-Line Dress": {
+    "gender": "Women",
+    "sub_category": "Dress"
+  },
+  "Bolly Lounge Girls Snow White & Pink Floral Dress": {
+    "gender": "Kids",
+    "sub_category": "Dress"
+  },
+  "US Polo Kids Boys Blue Cotton Printed T-Shirt": {
+    "gender": "Kids",
+    "sub_category": "T-Shirt"
+  },
+  "Tresnova Boys Black and Orange Cotton Printed Shorts - Pack of 2": {
+    "gender": "Kids",
+    "sub_category": "Shorts"
+  },
+  "StyloBug Girls Red Top With Pants": {
+    "gender": "Kids",
+    "sub_category": "Top With Pants"
+  },
+  "Pspeaches Girls Green Regular Fit Printed Lehenga Choli": {
+    "gender": "Kids",
+    "sub_category": "Lehenga Choli"
+  }
+}

@@ -138,8 +138,8 @@ export default function ProductCard({ product, wishlisted, onWishlist, onNegotia
           <motion.button
             whileTap={{ scale: 0.97 }}
             onClick={(e) => { e.stopPropagation(); router.push(`/product/${product.id}`); }}
-            className="flex-1 flex items-center justify-center"
-            style={{ background: "#3F2A63", color: "#fff", fontSize: 10, fontWeight: 800, padding: "6px 8px", borderRadius: 999, border: "none", cursor: "pointer" }}
+            className="flex-1 flex items-center justify-center bg-black"
+            style={{ background: "#000000", color: "#000000", fontSize: 10, fontWeight: 800, padding: "6px 8px", borderRadius: 999, border: "none", cursor: "pointer" }}
           >
             Buy Now
           </motion.button>

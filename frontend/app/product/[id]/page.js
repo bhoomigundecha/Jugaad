@@ -1,11 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { ChevronLeft, Heart, Share2, Star, Mic, ShoppingBag } from "lucide-react";
+import {
+  ChevronLeft, Heart, Share2, Star, Mic, ShoppingBag,
+  ShieldCheck, Truck, RotateCcw, Sparkles,
+} from "lucide-react";
 import { getProduct, startNegotiation } from "@/lib/api";
 import { getSession } from "@/lib/auth";
 
-// Per-category gradient — same as ProductCard
+const SERIF = "var(--font-playfair), Georgia, serif";
+const DEEP_PURPLE = "#2E1065";
 
 export default function ProductPage() {
   const router  = useRouter();
@@ -14,6 +18,7 @@ export default function ProductPage() {
   const [loading,  setLoading]  = useState(true);
   const [starting, setStarting] = useState(false);
   const [wishlisted, setWishlisted] = useState(false);
+  const [descExpanded, setDescExpanded] = useState(false);
 
   useEffect(() => {
     getProduct(id)
@@ -39,258 +44,253 @@ export default function ProductPage() {
 
   /* ── Loading ── */
   if (loading) return (
-    <div className="min-h-dvh flex items-center justify-center"
-      style={{ background: "linear-gradient(160deg, #e4d9f5, #d8cdf0)" }}>
-      <div className="w-10 h-10 rounded-full border-4 border-purple-400 border-t-transparent animate-spin" />
+    <div className="min-h-dvh flex items-center justify-center" style={{ background: "#fff" }}>
+      <div
+        className="w-9 h-9 rounded-full animate-spin"
+        style={{ border: "3px solid #E9DEFD", borderTopColor: "#7c3aed" }}
+      />
     </div>
   );
 
   if (!product) return (
-    <div className="min-h-dvh flex items-center justify-center"
-      style={{ background: "linear-gradient(160deg, #e4d9f5, #d8cdf0)" }}>
+    <div className="min-h-dvh flex items-center justify-center" style={{ background: "#fff" }}>
       <p className="text-gray-400">Product not found</p>
     </div>
   );
 
-  const grad        = "#fff";
   const origPrice   = product.originalPrice ?? Math.round(product.mrp * 1.25);
   const discountPct = Math.round((1 - product.mrp / origPrice) * 100);
+  const description = product.description || "High quality product crafted with care. Perfect for all occasions. Handpicked by our style team for the best look and feel.";
+  const descIsLong   = description.length > 110;
 
   return (
     <div className="min-h-dvh flex flex-col" style={{ background: "#fff" }}>
 
-      {/* ── Hero image ── */}
-      <div className="relative flex-shrink-0" style={{ height: 320, background: grad }}>
-
-        {product.imageUrl && (
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            style={{
-              position: "absolute", inset: 0,
-              width: "100%", height: "100%",
-              objectFit: "contain",
-              objectPosition: "center",
-              padding: 24,
-            }}
-          />
-        )}
-
-        {/* Top bar */}
-        <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-5 pt-12">
+      {/* ── Top nav ── */}
+      <div className="flex items-center justify-between px-5 pt-12 pb-3 flex-shrink-0">
+        <button
+          onClick={() => router.back()}
+          className="w-10 h-10 rounded-full flex items-center justify-center"
+          style={{ background: "#fff", border: "1px solid #ECE4F5", boxShadow: "0 4px 14px rgba(46,16,101,0.08)" }}
+        >
+          <ChevronLeft size={19} color="#2E1065" />
+        </button>
+        <div className="flex gap-2">
           <button
-            onClick={() => router.back()}
-            className="-mt-11 w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ background: "rgba(255,255,255,0.7)", backdropFilter: "blur(12px)" }}
+            className="w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ background: "#fff", border: "1px solid #ECE4F5", boxShadow: "0 4px 14px rgba(46,16,101,0.08)" }}
           >
-            <ChevronLeft size={20} color="#374151" marginTop={-1}/>
+            <Share2 size={15} color="#2E1065" />
           </button>
-          <div className="flex gap-2">
-            <button
-              className="-mt-11 w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ background: "rgba(255,255,255,0.7)", backdropFilter: "blur(12px)" }}
-            >
-              <Share2 size={16} color="#374151" />
-            </button>
-            <button
-              onClick={() => setWishlisted(!wishlisted)}
-              className="-mt-11 w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ background: "rgba(255,255,255,0.7)", backdropFilter: "blur(12px)" }}
-            >
-              <Heart size={16} color={wishlisted ? "#ef4444" : "#374151"} fill={wishlisted ? "#ef4444" : "none"} />
-            </button>
-          </div>
+          <button
+            onClick={() => setWishlisted(!wishlisted)}
+            className="w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ background: "#fff", border: "1px solid #ECE4F5", boxShadow: "0 4px 14px rgba(46,16,101,0.08)" }}
+          >
+            <Heart size={15} color={wishlisted ? "#ef4444" : "#2E1065"} fill={wishlisted ? "#ef4444" : "none"} />
+          </button>
         </div>
       </div>
 
-      {/* ── Info card ── */}
-      <div
-        className="flex-1 flex flex-col px-5 pt-6 pb-36"
-        style={{
-          background:   "#fff",
-          borderRadius: "28px 28px 0 0",
-          marginTop:    -24,
-          border:       "none",
-        }}
-      >
-        {/* Vendor + rating */}
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-1.5">
-            <div className="w-6 h-6 rounded-full flex items-center justify-center"
-              style={{ background: "#ede9fe" }}>
-              <ShoppingBag size={12} color="#7c3aed" />
+      {/* ── Product image card — white, image fills it edge-to-edge ── */}
+      <div className="relative flex-shrink-0 px-4 pb-4">
+        <div
+          className="relative rounded-[28px] overflow-hidden"
+          style={{ height: 380, background: "#fff" }}
+        >
+          {product.imageUrl && (
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              className="absolute inset-0 w-full h-full"
+              style={{ objectFit: "cover" }}
+            />
+          )}
+
+          {product.is_negotiable && (
+            <div
+              className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full z-10"
+              style={{ background: DEEP_PURPLE, boxShadow: "0 4px 14px rgba(46,16,101,0.35)" }}
+            >
+              <Sparkles size={11} color="#f3e8ff" />
+              <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", color: "#f3e8ff" }}>
+                AI Negotiation Available
+              </span>
             </div>
-            <span className="text-xs text-gray-500 font-medium">
-              {product.vendor_name || "Rajesh Fashion House"}
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Star size={12} color="#facc15" fill="#facc15" />
-            <span className="text-xs font-bold text-gray-700">4.8</span>
-            <span className="text-xs text-gray-400">· 1K+ Sold</span>
+          )}
+        </div>
+      </div>
+
+      {/* ── Content — standard Jugaad purple ── */}
+      <div
+        className="flex-1 flex flex-col px-6 pt-6 pb-40"
+        style={{ background: `linear-gradient(160deg, #4C1D95 0%, ${DEEP_PURPLE} 100%)`, borderRadius: "26px 26px 0 0" }}
+      >
+
+        {/* Rating pill */}
+        <div className="flex justify-center mb-3">
+          <div
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full"
+            style={{ background: "#fdf6e3", border: "1px solid #f0e0b8" }}
+          >
+            <Star size={11} color="#D4A94B" fill="#D4A94B" />
+            <span style={{ fontSize: 11.5, fontWeight: 700, color: "#a3781f" }}>4.8</span>
+            <span style={{ fontSize: 10.5, color: "#c2a875" }}>· 1K+ sold</span>
           </div>
         </div>
 
         {/* Name */}
-        <h1 className="text-xl font-black text-gray-900 leading-tight mb-3">
+        <h1
+          className="text-center leading-tight mb-2"
+          style={{ fontFamily: SERIF, fontSize: 23, fontWeight: 900, color: "#fff", letterSpacing: "-0.01em" }}
+        >
           {product.name}
         </h1>
 
-        
+        {/* Vendor row */}
+        <div className="flex items-center justify-center gap-1.5 mb-5">
+          <div
+            className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: "#fff" }}
+          >
+            <span style={{ fontSize: 8, fontWeight: 800, color: "#5B21B6" }}>
+              {(product.vendor || "RF").split(" ").map((w) => w[0]).slice(0, 2).join("")}
+            </span>
+          </div>
+          <span className="text-[12px] font-semibold" style={{ color: "rgba(255,255,255,0.75)" }}>
+            {product.vendor || "Rajesh Fashion House"}
+          </span>
+          <ShieldCheck size={12} color="#D4A94B" />
+        </div>
 
-        {/* Negotiate hint
-        <div
-          className="flex items-center gap-3 p-4 mb-5"
-          style={{ background: "linear-gradient(135deg, #f3e8ff, #ede9fe)", borderRadius: 18 }}
-        >
-          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-            style={{ background: "#7c3aed" }}>
-            <Mic size={18} color="#fff" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-purple-900">Want a better price?</p>
-            <p className="text-xs text-purple-500">Negotiate with our AI — Hindi, English, anything!</p>
-          </div>
-        </div> */}
+        {/* Price block */}
+        <div className="flex items-baseline justify-center gap-2.5 mb-1">
+          <span style={{ fontFamily: SERIF, fontSize: 32, fontWeight: 900, color: "#fff" }}>
+            ₹{product.mrp}
+          </span>
+          {origPrice > product.mrp && (
+            <span className="text-[14px]" style={{ color: "rgba(255,255,255,0.45)", textDecoration: "line-through" }}>
+              ₹{origPrice}
+            </span>
+          )}
+          {discountPct > 0 && (
+            <span
+              className="text-[10.5px] font-bold px-2 py-0.5 rounded-full"
+              style={{ background: "#fdf6e3", color: "#a3781f", border: "1px solid #f0e0b8" }}
+            >
+              {discountPct}% OFF
+            </span>
+          )}
+        </div>
+        <p className="text-[11px] text-center mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>Inclusive of all taxes</p>
+
+        {/* Trust badges */}
+        <div className="grid grid-cols-3 gap-2.5 mb-7">
+          {[
+            { icon: ShieldCheck, label: "100% Authentic" },
+            { icon: Truck,       label: "Fast Delivery" },
+            { icon: RotateCcw,   label: "7-Day Returns" },
+          ].map(({ icon: Icon, label }) => (
+            <div
+              key={label}
+              className="flex flex-col items-center text-center gap-1.5 py-3 px-1.5 rounded-2xl"
+              style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.14)" }}
+            >
+              <Icon size={16} color="#D4A94B" strokeWidth={1.8} />
+              <span className="text-[9.5px] font-semibold leading-tight" style={{ color: "rgba(255,255,255,0.85)" }}>{label}</span>
+            </div>
+          ))}
+        </div>
 
         {/* Description */}
-        <h3 className="font-bold text-gray-800 text-sm mb-1.5">Description</h3>
-        <p className="text-sm text-gray-500 leading-relaxed mb-6">
-          {product.description || "High quality product crafted with care. Perfect for all occasions. Handpicked by our style team for the best look and feel."}
-        </p>
+        <div className="mb-7">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "rgba(255,255,255,0.5)" }}>
+            About this piece
+          </p>
+          <p
+            className={`text-[13.5px] leading-relaxed ${descExpanded ? "" : "line-clamp-3"}`}
+            style={{ color: "rgba(255,255,255,0.85)" }}
+          >
+            {description}
+          </p>
+          {descIsLong && (
+            <button
+              onClick={() => setDescExpanded((v) => !v)}
+              className="text-[12px] font-bold mt-1"
+              style={{ color: "#D4A94B", background: "none", border: "none", cursor: "pointer" }}
+            >
+              {descExpanded ? "Show less" : "Read more"}
+            </button>
+          )}
+        </div>
 
-        {/* ── Divider ── */}
-        <div style={{ height: 1, background: "#f3f4f6", marginBottom: 20 }} />
+        {/* Divider */}
+        <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.14) 15%, rgba(255,255,255,0.14) 85%, transparent)", marginBottom: 24 }} />
 
-        {/* ── Delivery Options ── */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.1em", color: "#1f2937" }}>DELIVERY OPTIONS</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="1.8"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-
-          {/* Pincode input */}
-          <div className="flex items-center gap-2 mb-3" style={{ border: "1px solid #e5e7eb", borderRadius: 10, padding: "10px 14px" }}>
+        {/* Delivery */}
+        <div className="mb-2">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2.5" style={{ color: "rgba(255,255,255,0.5)" }}>
+            Delivery
+          </p>
+          <div
+            className="flex items-center gap-2 mb-2.5 px-4 py-3 rounded-2xl"
+            style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.16)" }}
+          >
             <input
               type="number"
               placeholder="Enter pincode"
               maxLength={6}
-              style={{ flex: 1, fontSize: 14, color: "#374151", background: "transparent", border: "none", outline: "none" }}
+              style={{ flex: 1, fontSize: 13, color: "#fff", background: "transparent", border: "none", outline: "none" }}
             />
-            <button style={{ fontSize: 13, fontWeight: 700, color: "#7c3aed", background: "none", border: "none", cursor: "pointer" }}>Check</button>
-          </div>
-          <p style={{ fontSize: 11, color: "#9ca3af", marginBottom: 12 }}>Enter PIN code to check delivery time &amp; Pay on Delivery availability</p>
-
-          {[
-            "100% Original Products",
-            "Pay on delivery might be available",
-            "Easy 7 days returns and exchanges",
-          ].map((line) => (
-            <div key={line} className="flex items-center gap-2 mb-1.5">
-              <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#d1d5db", flexShrink: 0 }} />
-              <span style={{ fontSize: 13, color: "#4b5563" }}>{line}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Divider ── */}
-        <div style={{ height: 1, background: "#f3f4f6", marginBottom: 20 }} />
-
-        {/* ── Best Offers ── */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.1em", color: "#1f2937" }}>BEST OFFERS</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="1.8"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          </div>
-
-          {/* Best price highlight */}
-          <p style={{ fontSize: 13, color: "#374151", marginBottom: 6 }}>
-            <span style={{ fontWeight: 700 }}>Best Price: </span>
-            <span style={{ color: "#7c3aed", fontWeight: 700 }}>₹{Math.round(product.mrp * 0.88)}</span>
-            <span style={{ fontSize: 11, color: "#9ca3af" }}> via UPI</span>
-          </p>
-          {[
-            "Applicable on: Orders above ₹300",
-            "Use UPI for instant checkout",
-            "Max Discount: ₹250 off on first order",
-          ].map((line) => (
-            <div key={line} className="flex items-start gap-2 mb-1">
-              <span style={{ color: "#9ca3af", fontSize: 13 }}>•</span>
-              <span style={{ fontSize: 12, color: "#6b7280" }}>{line}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Bank Offers ── */}
-        {[
-          { title: "10% Instant Discount on HDFC Credit Card", detail: "Min Spend ₹3,500 · Max Discount ₹1,000" },
-          { title: "10% Instant Discount on Kotak Bank Credit Card", detail: "Min Spend ₹3,500 · Max Discount ₹1,000" },
-          { title: "5% Cashback on Paytm Wallet", detail: "No minimum spend · Max Cashback ₹150" },
-        ].map((offer) => (
-          <div key={offer.title} className="mb-4">
-            <p style={{ fontSize: 13, fontWeight: 700, color: "#1f2937", marginBottom: 3 }}>{offer.title}</p>
-            <p style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>• {offer.detail}</p>
-            <button style={{ fontSize: 11, fontWeight: 700, color: "#7c3aed", background: "none", border: "none", padding: 0, cursor: "pointer" }}>
-              Terms &amp; Conditions
+            <button style={{ fontSize: 12.5, fontWeight: 700, color: "#D4A94B", background: "none", border: "none", cursor: "pointer" }}>
+              Check
             </button>
           </div>
-        ))}
+          <p style={{ fontSize: 10.5, color: "rgba(255,255,255,0.45)" }}>
+            Free delivery on prepaid orders · Cash on delivery available in most pincodes
+          </p>
+        </div>
       </div>
 
-      {/* ── Fixed bottom: segmented pill ── */}
+      {/* ── Fixed bottom CTA ── */}
       <div
-        className="rounded-[25px] fixed bottom-0 left-1/2 -translate-x-1/2 w-[360px] max-w-[430px] px-2 pb-2 pt-1"
+        className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] px-5 pb-5 pt-4"
         style={{
-          background:           "rgba(255,255,255,0.72)",
-          backdropFilter:       "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          borderTop:            "1px solid rgba(255,255,255,0.55)",
+          background: `linear-gradient(180deg, rgba(46,16,101,0) 0%, ${DEEP_PURPLE} 35%)`,
         }}
       >
-        {/* Outer pill wrapper */}
+        {product.is_negotiable && (
+          <p className="text-center text-[11px] font-medium mb-2.5 flex items-center justify-center gap-1.5" style={{ color: "rgba(255,255,255,0.75)" }}>
+            <Sparkles size={11} color="#D4A94B" />
+            Negotiate directly with Priya, your AI shopping concierge
+          </p>
+        )}
         <div
-          className="flex gap-2 p-1.5"
+          className="flex gap-2.5 p-1.5 rounded-[26px]"
+          style={{ background: "#fff", boxShadow: "0 10px 34px rgba(0,0,0,0.35)" }}
         >
-          {/* Buy Now */}
           <button
             onClick={handleBuyNow}
-            className="flex-1 flex items-center justify-center gap-2 active:scale-95 transition-transform"
-            style={{
-              background:   "#111",
-              color:        "#fff",
-              fontWeight:   800,
-              fontSize:     15,
-              height:       52,
-              borderRadius: 999,
-              border:       "none",
-              cursor:       "pointer",
-            }}
+            className="flex-1 flex items-center justify-center gap-2 h-[52px] rounded-[20px] font-bold text-[14.5px] active:scale-95 transition-transform"
+            style={{ background: "#000", color: "#fff" }}
           >
-            <ShoppingBag size={20} strokeWidth={2.5} />
+            <ShoppingBag size={18} strokeWidth={2.3} />
             Buy Now
           </button>
 
-          {/* Negotiate */}
-          <button
-            onClick={handleNegotiate}
-            disabled={starting}
-            className="flex-1 flex items-center justify-center gap-2 active:scale-95 transition-transform disabled:opacity-60"
-            style={{
-              background:   "#3F2A63",
-              color:        "#fff",
-              fontWeight:   800,
-              fontSize:     15,
-              height:       52,
-              borderRadius: 999,
-              border:       "none",
-              cursor:       "pointer",
-            }}
-          >
-            {starting
-              ? <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-              : <><Mic size={20} strokeWidth={2.5} /> Negotiate</>
-            }
-          </button>
+          {product.is_negotiable && (
+            <button
+              onClick={handleNegotiate}
+              disabled={starting}
+              className="flex-1 flex items-center justify-center gap-2 h-[52px] rounded-[20px] font-bold text-[14.5px] active:scale-95 transition-transform disabled:opacity-60"
+              style={{ background: `linear-gradient(135deg, #5B21B6, ${DEEP_PURPLE})`, color: "#fff" }}
+            >
+              {starting
+                ? <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                : <><Mic size={18} strokeWidth={2.3} /> Negotiate</>
+              }
+            </button>
+          )}
         </div>
       </div>
 

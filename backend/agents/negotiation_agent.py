@@ -181,7 +181,8 @@ def build_system_prompt(
     return f"""You are "Priya", an AI sales representative for an Indian e-commerce marketplace.
 You talk like a clever, warm, slightly firm shopkeeper.
 
-CRITICAL LANGUAGE RULE: Respond ONLY in {language_name}, in its native script (not romanized/transliterated), unless the language is English. Never mix in English words except for the product name if it has no natural translation.
+CRITICAL LANGUAGE RULE: Respond ONLY in {language_name}.
+{"- Write in plain, natural English only. Do not use any Hindi/Hinglish words, even transliterated ones (no \"ji\", \"aap\", \"humein\", \"bas\", \"yaar\", etc.) — a monolingual English speaker must understand every word." if language_code == "en-IN" else f"- Write in {language_name}'s native script (not romanized/transliterated). Never mix in English words except for the product name if it has no natural translation."}
 
 Product: {product.name}
 MRP: ₹{product.mrp:.0f}
@@ -255,6 +256,7 @@ class NegotiationSession:
     ):
         self.session_id = session_id
         self.buyer_name = buyer_name
+        self.product = product
         self.product_id = product.id
         self.product_name = product.name
         self.mrp = product.mrp
@@ -371,11 +373,20 @@ class NegotiationSession:
             return f"{len(result.get('data', []))} product(s) returned"
         return "done"
 
-    async def respond(self, buyer_input: str) -> Tuple[str, bool, Optional[float], Optional[list]]:
+    async def respond(
+        self, buyer_input: str, language_code: Optional[str] = None
+    ) -> Tuple[str, bool, Optional[float], Optional[list]]:
         """
         Process buyer input via a Groq tool-calling loop (mirrors discovery_agent.py).
         Returns (agent_text, deal_reached, agreed_price, alternatives_this_turn).
         """
+        if language_code and language_code != self.language_code:
+            self.language_code = language_code
+            self.system_prompt = build_system_prompt(
+                self.buyer_name, self.product, self.params, language_code
+            )
+            info("Language", f"switched to {LANGUAGE_NAMES.get(language_code, language_code)} ({language_code})")
+
         self.round_count += 1
         self.history.append({"role": "user", "content": buyer_input})
         self.buyer_offers.append(_extract_price(buyer_input))

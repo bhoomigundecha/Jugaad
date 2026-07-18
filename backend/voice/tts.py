@@ -1,8 +1,8 @@
 """
-Sarvam TTS — Hindi Text to Speech
+Sarvam TTS — Multilingual Text to Speech
 ────────────────────────────────────
-Converts agent's Hindi/Hinglish text → audio bytes (wav).
-Uses Sarvam AI's Bulbul v2 model.
+Converts agent's text → audio bytes.
+Uses Sarvam AI's Bulbul v3 model (replaces deprecated Bulbul v2).
 """
 
 import os
@@ -18,7 +18,7 @@ load_dotenv()
 SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
 TTS_URL = "https://api.sarvam.ai/text-to-speech"
 
-DEFAULT_SPEAKER = "manisha"
+DEFAULT_SPEAKER = "priya"
 
 
 def preprocess_text(text: str) -> str:
@@ -83,9 +83,13 @@ def split_into_chunks(text: str, max_chars: int = 400) -> list[str]:
     return chunks or [text[:max_chars]]
 
 
-async def synthesize_speech(text: str, speaker: str = DEFAULT_SPEAKER) -> bytes:
+async def synthesize_speech(
+    text: str,
+    speaker: str = DEFAULT_SPEAKER,
+    language_code: str = "hi-IN",
+) -> bytes:
     """
-    Convert Hindi/Hinglish text to WAV bytes.
+    Convert text to audio bytes, in the given target language.
     Preprocesses text and handles chunking for naturalness.
     """
     if not SARVAM_API_KEY:
@@ -105,15 +109,12 @@ async def synthesize_speech(text: str, speaker: str = DEFAULT_SPEAKER) -> bytes:
     }
 
     payload = {
-        "inputs": [speak_text],
-        "target_language_code": "hi-IN",
+        "text": speak_text,
+        "target_language_code": language_code,
         "speaker": speaker,
-        "pitch": 0,          # neutral pitch — manisha's natural voice is already warm
         "pace": 0.9,         # slightly slower than default → more natural cadence
-        "loudness": 1.2,     # 1.5 can distort; 1.2 is loud enough without clipping
-        "speech_sample_rate": 22050,
-        "enable_preprocessing": True,   # Sarvam's own normaliser on top of ours
-        "model": "bulbul:v2",
+        "speech_sample_rate": "22050",
+        "model": "bulbul:v3",
     }
 
     t0 = time.time()

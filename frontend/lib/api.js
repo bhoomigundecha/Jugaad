@@ -1,21 +1,16 @@
 const BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const WS_BASE = process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000";
 
-// Image + discount metadata keyed by product ID
-// Add more entries as you seed more products
-const PRODUCT_META = {
-  1: { imageUrl: "/product/bandhni_silk_dupatta.png", discount: "15% OFF", originalPrice: 1059 },
-  2: { imageUrl: "/product/lucknow_chikankari_kurti.png", discount: "20% OFF", originalPrice: 1499 },
-  3: { imageUrl: "/product/product3.jpeg", discount: null,       originalPrice: null  },
-  4: { imageUrl: "/product/product4.jpeg", discount: "10% OFF", originalPrice: 555  },
-  5: { imageUrl: "/product/product5.jpeg", discount: null,       originalPrice: null  },
-  6: { imageUrl: "/product/product6.jpeg", discount: "25% OFF", originalPrice: null  },
-};
-
 function enrichProduct(p) {
   if (!p || p.id == null) return null;
-  const meta = PRODUCT_META[p.id] || {};
-  return { ...p, ...meta };
+  // camelCase alias for the backend's snake_case image_url — every product
+  // now has a real, correctly-matched image from the seed catalog, so no
+  // per-ID overrides here. (A previous PRODUCT_META table hardcoded a
+  // handful of legacy ids to unrelated placeholder images — e.g. product 3
+  // showed a band t-shirt photo instead of the actual bedsheet — and faked
+  // discount badges for only 4 of 936 products. Removed both: they were
+  // stale data that actively contradicted the real catalog.)
+  return { imageUrl: p.image_url, ...p };
 }
 
 export async function getProducts() {
@@ -84,4 +79,35 @@ export async function getLiveNegotiations(vendorId) {
 
 export function getNegotiationWsUrl(sessionId) {
   return `${WS_BASE}/ws/negotiate/${sessionId}`;
+}
+
+/**
+ * One Discovery Agent turn — either `audioBase64` (recorded mic clip) or
+ * `text` (fallback), plus the growing conversation history so far.
+ * Returns { messages, reply, transcript, reply_audio, tool_results }.
+ */
+export async function discoverTurn(buyerId, messages, { audioBase64, text } = {}) {
+  const res = await fetch(`${BASE}/buyer/discover`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      buyer_id: buyerId,
+      messages,
+      audio: audioBase64 || undefined,
+      text: text || undefined,
+    }),
+  });
+  if (!res.ok) throw new Error("Discovery turn failed");
+  return res.json();
+}
+
+/** Extract product cards out of a discover-turn's tool_results, if any. */
+export function extractProductsFromToolResults(toolResults = []) {
+  for (const tr of toolResults) {
+    const data = tr.result?.data;
+    if (Array.isArray(data) && data.length && (tr.tool === "search_product" || tr.tool === "recommend_outfit")) {
+      return data.map(enrichProduct).filter(Boolean);
+    }
+  }
+  return null;
 }

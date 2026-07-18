@@ -18,7 +18,7 @@ export default function JugaadWordmark({
   align        = "left",
 }) {
   return (
-    <div className="-mt-12">
+    <div className="-mt-12" style={{ textAlign: align }}>
       <h1
         className="leading-none"
         style={{
@@ -33,7 +33,7 @@ export default function JugaadWordmark({
       </h1>
       {tagline && (
         <p
-          className="mt-0.5 text-center tracking-widest uppercase font-medium"
+          className="mt-0.5 tracking-widest uppercase font-medium"
           style={{ fontSize: 11, color: taglineColor }}
         >
           {tagline}

@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Search, Bell, ShoppingBag } from "lucide-react";
+import { Search, Bell, ShoppingBag, Mic } from "lucide-react";
+import { motion } from "framer-motion";
 import BottomNav from "@/components/BottomNav";
 import JugaadWordmark from "@/components/JugaadWordmark";
 import ProductCarousel from "@/components/ProductCarousel";
@@ -9,6 +10,7 @@ import HomeBanner from "@/components/HomeBanner";
 import { getProducts } from "@/lib/api";
 import { getSession } from "@/lib/auth";
 import ProductCard from "../../components/ProductCard";
+import { ProductRevealCard } from "@/components/ui/product-reveal-card";
 
 const CATEGORIES = [
   { label: "All",         image: "/home/all.jpeg" },
@@ -104,6 +106,24 @@ export default function HomePage() {
           />
         </div>
 
+        {/* ── Go Voice Mode ── */}
+        <motion.button
+          whileTap={{ scale: 0.97 }}
+          onClick={() => router.push("/voice")}
+          className="w-full flex items-center justify-center gap-2 mb-5"
+          style={{
+            background: "linear-gradient(135deg, #7c3aed, #a855f7)",
+            boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
+            borderRadius: 999,
+            padding: "13px 18px",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          <Mic size={17} color="#fff" />
+          <span style={{ fontSize: 14, fontWeight: 800, color: "#fff" }}>Go Voice Mode</span>
+        </motion.button>
+
         {/* ── Categories ── */}
         <div
           className="flex gap-4 mb-5 overflow-x-auto"
@@ -148,6 +168,7 @@ export default function HomePage() {
           onNegotiate={handleNegotiate}
           layout="scroll"
           glass
+          CardComponent={ProductRevealCard}
         />
 
 

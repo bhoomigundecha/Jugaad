@@ -1,6 +1,7 @@
 """
-Sarvam STT — Hindi Speech to Text
-Uses Sarvam AI's Saarika v2.5 model.
+Sarvam STT — Multilingual Speech to Text
+Uses Sarvam AI's Saaras v3 model (23 languages: 22 Indian + English),
+replacing the deprecated Saarika v2.5 (11 languages).
 """
 
 import os
@@ -13,9 +14,14 @@ load_dotenv()
 
 SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
 STT_URL = "https://api.sarvam.ai/speech-to-text"
+DEFAULT_LANGUAGE_CODE = "hi-IN"
 
 
-async def transcribe_audio(audio_bytes: bytes, filename: str = "audio.webm") -> str:
+async def transcribe_audio(
+    audio_bytes: bytes,
+    filename: str = "audio.webm",
+    language_code: str = DEFAULT_LANGUAGE_CODE,
+) -> str:
     if not SARVAM_API_KEY:
         raise ValueError("SARVAM_API_KEY not set in environment")
 
@@ -38,8 +44,8 @@ async def transcribe_audio(audio_bytes: bytes, filename: str = "audio.webm") -> 
 
     files = {
         "file": (fname, audio_bytes, content_type),
-        "model": (None, "saarika:v2.5"),
-        "language_code": (None, "hi-IN"),
+        "model": (None, "saaras:v3"),
+        "language_code": (None, language_code),
     }
 
     t0 = time.time()

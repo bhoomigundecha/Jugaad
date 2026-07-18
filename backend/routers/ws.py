@@ -15,6 +15,7 @@ SERVER → BROWSER:
   { "type": "agent_text",    "text": "..." }            — agent response text
   { "type": "agent_audio",   "data": "<base64 wav>" }  — agent audio to play
   { "type": "deal_reached",  "price": 850, "nudge": "...", "checkout_url": "..." }
+  { "type": "alternatives",  "products": [...] }        — find_alternatives fired (stalled deal)
   { "type": "error",         "message": "..." }
   { "type": "log",           "text": "..." }            — backend log for vendor dashboard
 """
@@ -31,6 +32,7 @@ from agents.negotiation_agent import NegotiationSession
 from agents.deal_closing_agent import close_deal, mark_abandoned
 from voice.stt import transcribe_audio
 from voice.tts import synthesize_speech
+from voice.language_detect import detect_language_code
 from logger import banner, session_start, round_header, error_log
 
 router = APIRouter(tags=["websocket"])
@@ -79,27 +81,29 @@ async def negotiate_ws(session_id: str, websocket: WebSocket):
     })
 
     # ── Init Negotiation Agent session ────────────────────────────────────────
+    language_code = buyer.language or "hi-IN"
     neg_session = NegotiationSession(
         session_id=session_id,
         buyer_name=buyer.name,
-        product_name=product.name,
-        mrp=product.mrp,
+        product=product,
         params=params,
+        language_code=language_code,
     )
     active_sessions[session_id] = neg_session
     started_at = datetime.utcnow()
 
     # ── Agent opening line ────────────────────────────────────────────────────
-    opening_text = neg_session.get_opening_line()
+    opening_text = await neg_session.get_opening_line()
     await send(websocket, {"type": "agent_text", "text": opening_text})
 
     try:
-        opening_audio = await synthesize_speech(opening_text)
+        opening_audio = await synthesize_speech(opening_text, language_code=language_code)
         await send(websocket, {
             "type": "agent_audio",
             "data": base64.b64encode(opening_audio).decode(),
         })
     except Exception as e:
+        error_log("TTS", str(e))
         await send(websocket, {"type": "error", "message": f"TTS error: {str(e)}"})
 
     # ── Main conversation loop ────────────────────────────────────────────────
@@ -120,7 +124,7 @@ async def negotiate_ws(session_id: str, websocket: WebSocket):
             if msg_type == "audio":
                 try:
                     audio_bytes = base64.b64decode(message["data"])
-                    buyer_text = await transcribe_audio(audio_bytes)
+                    buyer_text = await transcribe_audio(audio_bytes, language_code=language_code)
                     if not buyer_text:
                         # Silent recording — skip silently, don't send error
                         continue
@@ -130,6 +134,7 @@ async def negotiate_ws(session_id: str, websocket: WebSocket):
                         "text": f"[STT] {buyer.name}: \"{buyer_text}\""
                     })
                 except Exception as e:
+                    error_log("STT", str(e))
                     await send(websocket, {"type": "error", "message": f"STT error: {str(e)}"})
                     continue
 
@@ -143,6 +148,11 @@ async def negotiate_ws(session_id: str, websocket: WebSocket):
 
             if not buyer_text:
                 continue
+
+            # Reply (and hint future STT) in whatever language the buyer is
+            # actually using this turn, instead of staying pinned to their
+            # stored profile language for the whole session.
+            language_code = detect_language_code(buyer_text, fallback=language_code)
 
             # Track opening offer
             if negotiation.opening_price is None:
@@ -158,8 +168,11 @@ async def negotiate_ws(session_id: str, websocket: WebSocket):
 
             # ── Negotiation Agent responds ────────────────────────────────────
             try:
-                agent_text, deal_reached, agreed_price = await neg_session.respond(buyer_text)
+                agent_text, deal_reached, agreed_price, alternatives = await neg_session.respond(
+                    buyer_text, language_code=language_code
+                )
             except Exception as e:
+                error_log("Negotiation Agent", str(e))
                 await send(websocket, {"type": "error", "message": f"Agent error: {str(e)}"})
                 continue
 
@@ -169,9 +182,17 @@ async def negotiate_ws(session_id: str, websocket: WebSocket):
                 "text": f"[Agent] Priya: \"{agent_text}\""
             })
 
+            # ── Alternatives — pushed when find_alternatives fired this turn ───
+            if alternatives:
+                await send(websocket, {"type": "alternatives", "products": alternatives})
+                await send(websocket, {
+                    "type": "log",
+                    "text": f"[find_alternatives] {len(alternatives)} product(s) pushed to buyer screen"
+                })
+
             # ── TTS: agent speaks ─────────────────────────────────────────────
             try:
-                agent_audio = await synthesize_speech(agent_text)
+                agent_audio = await synthesize_speech(agent_text, language_code=language_code)
                 await send(websocket, {
                     "type": "agent_audio",
                     "data": base64.b64encode(agent_audio).decode(),

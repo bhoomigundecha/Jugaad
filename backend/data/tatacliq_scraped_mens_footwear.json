@@ -1,0 +1,372 @@
+[
+  {
+    "brand_name": "Crocs",
+    "product_name": "Crocs Unisex Classic Black Back Strap Clogs",
+    "current_price": "₹4045",
+    "original_price": "₹4495",
+    "discount": "10% off",
+    "image_url": "https://img.tatacliq.com/images/i3/437Wx649H/MP000000003087772_437Wx649H_20180505134810.jpeg",
+    "product_url": "https://www.tatacliq.com/crocs-unisex-classic-black-back-strap-clogs/p-mp000000003088213",
+    "product_id": "3088213"
+  },
+  {
+    "brand_name": "adidas",
+    "product_name": "Adidas Men's Predator Club FT FG MG Red Football Shoes",
+    "current_price": "₹4421",
+    "original_price": "₹6599",
+    "discount": "33% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030242927_437Wx649H_202602261138061.jpeg",
+    "product_url": "https://www.tatacliq.com/adidas-mens-predator-club-ft-fg-mg-red-football-shoes/p-mp000000030242947",
+    "product_id": "30242947"
+  },
+  {
+    "brand_name": "Woodland",
+    "product_name": "Woodland Men's Black & Light Grey Clogs",
+    "current_price": "₹734",
+    "original_price": "₹1049",
+    "discount": "30% off",
+    "image_url": "https://img.tatacliq.com/images/i31/437Wx649H/MP000000030952546_437Wx649H_202605020135231.jpeg",
+    "product_url": "https://www.tatacliq.com/woodland-mens-black-light-grey-clogs/p-mp000000030952551",
+    "product_id": "30952551"
+  },
+  {
+    "brand_name": "Asics",
+    "product_name": "Asics Men's GEL-VENTURE 9 Blue Running Shoes",
+    "current_price": "₹3599",
+    "original_price": "₹5999",
+    "discount": "40% off",
+    "image_url": "https://img.tatacliq.com/images/i24//437Wx649H/MP000000026703254_437Wx649H_202505220631351.jpeg",
+    "product_url": "https://www.tatacliq.com/asics-mens-gelventure-9-blue-running-shoes/p-mp000000026703272",
+    "product_id": "26703272"
+  },
+  {
+    "brand_name": "U.S. Polo Assn.",
+    "product_name": "U.S. Polo Assn. Men's COBA2.0 Off White Sneakers",
+    "current_price": "₹2975",
+    "original_price": "₹4799",
+    "discount": "38% off",
+    "image_url": "https://img.tatacliq.com/images/i29/437Wx649H/MP000000029560121_437Wx649H_202512172324481.jpeg",
+    "product_url": "https://www.tatacliq.com/us-polo-assn-mens-coba20-off-white-sneakers/p-mp000000029560140",
+    "product_id": "29560140"
+  },
+  {
+    "brand_name": "Crocs",
+    "product_name": "Crocs Men's Classic Aloe Green Back Strap Clogs",
+    "current_price": "₹4495",
+    "original_price": "₹4995",
+    "discount": "10% off",
+    "image_url": "https://img.tatacliq.com/images/i22//437Wx649H/MP000000025055503_437Wx649H_202501160142451.jpeg",
+    "product_url": "https://www.tatacliq.com/crocs-mens-classic-aloe-green-back-strap-clogs/p-mp000000025055503",
+    "product_id": "25055503"
+  },
+  {
+    "brand_name": "Nike",
+    "product_name": "Nike Men's Run Defy Summit White & Bright Crimson Running Shoes",
+    "current_price": "₹2996",
+    "original_price": "₹3995",
+    "discount": "25% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000029925820_437Wx649H_202602212023441.jpeg",
+    "product_url": "https://www.tatacliq.com/nike-mens-run-defy-summit-white-bright-crimson-running-shoes/p-mp000000029925820",
+    "product_id": "29925820"
+  },
+  {
+    "brand_name": "Decathlon",
+    "product_name": "Kiprun - Men Grey Jogflow 190.1 Superior Grip Cushioned Running Shoes",
+    "current_price": "₹2499",
+    "original_price": "₹3249",
+    "discount": "23% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030162633_437Wx649H_202602192338211.jpeg",
+    "product_url": "https://www.tatacliq.com/kiprun-men-grey-jogflow-1901-superior-grip-cushioned-running-shoes/p-mp000000030162623",
+    "product_id": "30162623"
+  },
+  {
+    "brand_name": "Campus",
+    "product_name": "Campus Men's White Running Shoes",
+    "current_price": "₹999",
+    "original_price": "₹1999",
+    "discount": "50% off",
+    "image_url": "https://img.tatacliq.com/images/i27//437Wx649H/MP000000027124563_437Wx649H_202510122253071.jpeg",
+    "product_url": "https://www.tatacliq.com/campus-mens-white-running-shoes/p-mp000000027124570",
+    "product_id": "27124570"
+  },
+  {
+    "brand_name": "Mochi",
+    "product_name": "Mochi Men's Black Casual Loafers",
+    "current_price": "₹1247",
+    "original_price": "₹2490",
+    "discount": "50% off",
+    "image_url": "https://img.tatacliq.com/images/i19//437Wx649H/MP000000011821724_437Wx649H_202408011524191.jpeg",
+    "product_url": "https://www.tatacliq.com/mochi-mens-black-casual-loafers/p-mp000000011821719",
+    "product_id": "11821719"
+  },
+  {
+    "brand_name": "Crocs",
+    "product_name": "Crocs Men's Pond Clogs",
+    "current_price": "₹4045",
+    "original_price": "₹4495",
+    "discount": "10% off",
+    "image_url": "https://img.tatacliq.com/images/i27//437Wx649H/MP000000028697787_437Wx649H_202510081917381.jpeg",
+    "product_url": "https://www.tatacliq.com/crocs-mens-pond-clogs/p-mp000000028697626",
+    "product_id": "28697626"
+  },
+  {
+    "brand_name": "Puma",
+    "product_name": "Puma Men's Skyrocket Lite 2 Ebony Running Shoes",
+    "current_price": "₹3999",
+    "original_price": "₹4999",
+    "discount": "20% off",
+    "image_url": "https://img.tatacliq.com/images/i32/437Wx649H/MP000000031367344_437Wx649H_202606051438341.jpeg",
+    "product_url": "https://www.tatacliq.com/puma-mens-skyrocket-lite-2-ebony-running-shoes/p-mp000000031367344",
+    "product_id": "31367344"
+  },
+  {
+    "brand_name": "Lotto",
+    "product_name": "Lotto Men's Mavin Court Black & White Casual Sneakers",
+    "current_price": "₹1996",
+    "original_price": "₹4999",
+    "discount": "60% off",
+    "image_url": "https://img.tatacliq.com/images/i29/437Wx649H/MP000000029850483_437Wx649H_202601231844411.jpeg",
+    "product_url": "https://www.tatacliq.com/lotto-mens-mavin-court-black-white-casual-sneakers/p-mp000000029850483",
+    "product_id": "29850483"
+  },
+  {
+    "brand_name": "Crocs",
+    "product_name": "Crocs Men's Mellow Atmosphere Grey Slides",
+    "current_price": "₹4495",
+    "original_price": "₹4995",
+    "discount": "10% off",
+    "image_url": "https://img.tatacliq.com/images/i9/437Wx649H/MP000000016349578_437Wx649H_202302022229261.jpeg",
+    "product_url": "https://www.tatacliq.com/crocs-mens-mellow-atmosphere-grey-slides/p-mp000000016349572",
+    "product_id": "16349572"
+  },
+  {
+    "brand_name": "Woodland",
+    "product_name": "Woodland Men's Denim Casual Sandals",
+    "current_price": "₹2387",
+    "original_price": "₹2595",
+    "discount": "8% off",
+    "image_url": "https://img.tatacliq.com/images/i31/437Wx649H/MP000000030952651_437Wx649H_202605020157291.jpeg",
+    "product_url": "https://www.tatacliq.com/woodland-mens-denim-casual-sandals/p-mp000000030952661",
+    "product_id": "30952661"
+  },
+  {
+    "brand_name": "Carlton London",
+    "product_name": "Carlton London  Men's Brown Casual Sandals",
+    "current_price": "₹1374",
+    "original_price": "₹2499",
+    "discount": "45% off",
+    "image_url": "https://img.tatacliq.com/images/i28/437Wx649H/MP000000029183772_437Wx649H_202511151839081.jpeg",
+    "product_url": "https://www.tatacliq.com/carlton-london-mens-brown-casual-sandals/p-mp000000029183772",
+    "product_id": "29183772"
+  },
+  {
+    "brand_name": "Aldo",
+    "product_name": "Aldo Men's WILBARTN Black Casual Loafers",
+    "current_price": "₹8490",
+    "original_price": "₹16999",
+    "discount": "50% off",
+    "image_url": "https://img.tatacliq.com/images/i29/437Wx649H/MP000000029657870_437Wx649H_202512312303321.jpeg",
+    "product_url": "https://www.tatacliq.com/aldo-mens-wilbartn-black-casual-loafers/p-mp000000029657883",
+    "product_id": "29657883"
+  },
+  {
+    "brand_name": "U.S. Polo Assn.",
+    "product_name": "U.S. Polo Assn. Men's 2FD-RUBEN 3.0 Dark Green Sneakers",
+    "current_price": "₹2399",
+    "original_price": "₹3999",
+    "discount": "40% off",
+    "image_url": "https://img.tatacliq.com/images/i28/437Wx649H/MP000000029103902_437Wx649H_202511081627041.jpeg",
+    "product_url": "https://www.tatacliq.com/us-polo-assn-mens-2fdruben-30-dark-green-sneakers/p-mp000000029103912",
+    "product_id": "29103912"
+  },
+  {
+    "brand_name": "Nike",
+    "product_name": "Nike Men's COURT VISION LO P NB Summit White & Black Silver Sage Casual Sneakers",
+    "current_price": "₹4871",
+    "original_price": "₹6495",
+    "discount": "25% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030071552_437Wx649H_202603080627321.jpeg",
+    "product_url": "https://www.tatacliq.com/nike-mens-court-vision-lo-p-nb-summit-white-black-silver-sage-casual-sneakers/p-mp000000030071561",
+    "product_id": "30071561"
+  },
+  {
+    "brand_name": "Campus",
+    "product_name": "Campus Men's CAMP ZYLON Black Running Shoes",
+    "current_price": "₹1099",
+    "original_price": "₹2299",
+    "discount": "52% off",
+    "image_url": "https://img.tatacliq.com/images/i17//437Wx649H/MP000000016785847_437Wx649H_202405170803201.jpeg",
+    "product_url": "https://www.tatacliq.com/campus-mens-camp-zylon-black-running-shoes/p-mp000000016785788",
+    "product_id": "16785788"
+  },
+  {
+    "brand_name": "Adidas Originals",
+    "product_name": "Adidas Originals Men's SAMBA OG White Casual Sneakers",
+    "current_price": "₹7149",
+    "original_price": "₹10999",
+    "discount": "35% off",
+    "image_url": "https://img.tatacliq.com/images/i14/437Wx649H/MP000000020229791_437Wx649H_202311250248071.jpeg",
+    "product_url": "https://www.tatacliq.com/adidas-originals-mens-samba-og-white-casual-sneakers/p-mp000000020229791",
+    "product_id": "20229791"
+  },
+  {
+    "brand_name": "adidas",
+    "product_name": "Adidas Purechill Slide Men's Black Slides",
+    "current_price": "₹3349",
+    "original_price": "₹4999",
+    "discount": "33% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030350257_437Wx649H_202603052217411.jpeg",
+    "product_url": "https://www.tatacliq.com/adidas-purechill-slide-mens-black-slides/p-mp000000030350424",
+    "product_id": "30350424"
+  },
+  {
+    "brand_name": "Asics",
+    "product_name": "Asics Men's NOVABLAST 5 Yamabuki & Anzu Running Shoes",
+    "current_price": "₹11199",
+    "original_price": "₹13999",
+    "discount": "20% off",
+    "image_url": "https://img.tatacliq.com/images/i29/437Wx649H/MP000000029493526_437Wx649H_202512102251391.jpeg",
+    "product_url": "https://www.tatacliq.com/asics-mens-novablast-5-yamabuki-anzu-running-shoes/p-mp000000029493540",
+    "product_id": "29493540"
+  },
+  {
+    "brand_name": "Red Chief",
+    "product_name": "Red Chief Men's Navy Casual Loafers",
+    "current_price": "₹2625",
+    "original_price": "₹5349",
+    "discount": "51% off",
+    "image_url": "https://img.tatacliq.com/images/i9/437Wx649H/MP000000015777292_437Wx649H_202212210045351.jpeg",
+    "product_url": "https://www.tatacliq.com/red-chief-mens-navy-casual-loafers/p-mp000000015777292",
+    "product_id": "15777292"
+  },
+  {
+    "brand_name": "Mochi",
+    "product_name": "Mochi Men's Black Slip-Ons",
+    "current_price": "₹3003",
+    "original_price": "₹4290",
+    "discount": "30% off",
+    "image_url": "https://img.tatacliq.com/images/i31/437Wx649H/MP000000030887399_437Wx649H_202604291034351.jpeg",
+    "product_url": "https://www.tatacliq.com/mochi-mens-black-slipons/p-mp000000030887399",
+    "product_id": "30887399"
+  },
+  {
+    "brand_name": "Decathlon",
+    "product_name": "Quechua - Men Black NH500 Low-Rise Wp Waterproof Hiking Boots",
+    "current_price": "₹6199",
+    "original_price": "₹7799",
+    "discount": "21% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030421336_437Wx649H_202603102019091.jpeg",
+    "product_url": "https://www.tatacliq.com/quechua-men-black-nh500-lowrise-wp-waterproof-hiking-boots/p-mp000000030421336",
+    "product_id": "30421336"
+  },
+  {
+    "brand_name": "Mochi",
+    "product_name": "Mochi Men's Black Derby Boots",
+    "current_price": "₹2593",
+    "original_price": "₹3990",
+    "discount": "35% off",
+    "image_url": "https://img.tatacliq.com/images/i31/437Wx649H/MP000000030886999_437Wx649H_202604291019381.jpeg",
+    "product_url": "https://www.tatacliq.com/mochi-mens-black-derby-boots/p-mp000000030886999",
+    "product_id": "30886999"
+  },
+  {
+    "brand_name": "Liberty",
+    "product_name": "Liberty Men's LEAP7X WATSON-1E Black Running Shoes",
+    "current_price": "₹1119",
+    "original_price": "₹2199",
+    "discount": "49% off",
+    "image_url": "https://img.tatacliq.com/images/i28//437Wx649H/MP000000028802626_437Wx649H_202510151957101.jpeg",
+    "product_url": "https://www.tatacliq.com/liberty-mens-leap7x-watson1e-black-running-shoes/p-mp000000028802626",
+    "product_id": "28802626"
+  },
+  {
+    "brand_name": "Metro",
+    "product_name": "Metro Men's Brown Casual Loafers",
+    "current_price": "₹1250",
+    "original_price": "₹2690",
+    "discount": "54% off",
+    "image_url": "https://img.tatacliq.com/images/i19//437Wx649H/MP000000011936666_437Wx649H_202408011524311.jpeg",
+    "product_url": "https://www.tatacliq.com/metro-mens-brown-casual-loafers/p-mp000000011936673",
+    "product_id": "11936673"
+  },
+  {
+    "brand_name": "Crocs",
+    "product_name": "Crocs Unisex Classic White Clogs",
+    "current_price": "₹4045",
+    "original_price": "₹4495",
+    "discount": "10% off",
+    "image_url": "https://img.tatacliq.com/images/i3/437Wx649H/MP000000000178626_437Wx649H_20181202095431.jpeg",
+    "product_url": "https://www.tatacliq.com/crocs-unisex-classic-white-clogs/p-mp000000000179759",
+    "product_id": "179759"
+  },
+  {
+    "brand_name": "Reebok",
+    "product_name": "Reebok Progressive Run Men's Black Running Shoes",
+    "current_price": "₹1899",
+    "original_price": "₹3799",
+    "discount": "50% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030393568_437Wx649H_202603081419361.jpeg",
+    "product_url": "https://www.tatacliq.com/reebok-progressive-run-mens-black-running-shoes/p-mp000000030393568",
+    "product_id": "30393568"
+  },
+  {
+    "brand_name": "Palladium",
+    "product_name": "Palladium Men's THUNDER LITE PHANTOM Dusky Green Sneakers",
+    "current_price": "₹7199",
+    "original_price": "₹11999",
+    "discount": "40% off",
+    "image_url": "https://img.tatacliq.com/images/i31/437Wx649H/MP000000030521885_437Wx649H_202605220254391.jpeg",
+    "product_url": "https://www.tatacliq.com/palladium-mens-thunder-lite-phantom-dusky-green-sneakers/p-mp000000030521851",
+    "product_id": "30521851"
+  },
+  {
+    "brand_name": "Nike",
+    "product_name": "Nike Men's AIR WINFLO White & Black Glacier Blue Green Strike Running Shoes",
+    "current_price": "₹6521",
+    "original_price": "₹8695",
+    "discount": "25% off",
+    "image_url": "https://img.tatacliq.com/images/i30//437Wx649H/MP000000030071725_437Wx649H_202602141136541.jpeg",
+    "product_url": "https://www.tatacliq.com/nike-mens-air-winflo-white-black-glacier-blue-green-strike-running-shoes/p-mp000000030071734",
+    "product_id": "30071734"
+  },
+  {
+    "brand_name": "adidas",
+    "product_name": "ADIDAS Men's SUPERNOVA STEP M Black Running Shoes",
+    "current_price": "₹5000",
+    "original_price": "₹9999",
+    "discount": "50% off",
+    "image_url": "https://img.tatacliq.com/images/i26//437Wx649H/MP000000027866312_437Wx649H_202508212255541.jpeg",
+    "product_url": "https://www.tatacliq.com/adidas-mens-supernova-step-m-black-running-shoes/p-mp000000027866304",
+    "product_id": "27866304"
+  },
+  {
+    "brand_name": "Neemans",
+    "product_name": "Neemans Men's Knit Ease Slip On Blue Walking Shoes",
+    "current_price": "₹1099",
+    "original_price": "₹2299",
+    "discount": "52% off",
+    "image_url": "https://img.tatacliq.com/images/i28//437Wx649H/MP000000028927099_437Wx649H_202510270755471.jpeg",
+    "product_url": "https://www.tatacliq.com/neemans-mens-knit-ease-slip-on-blue-walking-shoes/p-mp000000028927108",
+    "product_id": "28927108"
+  },
+  {
+    "brand_name": "Campus",
+    "product_name": "Campus Men's Olive & Light Beige Running Shoes",
+    "current_price": "₹979",
+    "original_price": "₹1949",
+    "discount": "50% off",
+    "image_url": "https://img.tatacliq.com/images/i26//437Wx649H/MP000000028029274_437Wx649H_202508281246531.jpeg",
+    "product_url": "https://www.tatacliq.com/campus-mens-olive-light-beige-running-shoes/p-mp000000028029288",
+    "product_id": "28029288"
+  },
+  {
+    "brand_name": "Campus",
+    "product_name": "Campus Men's Flynn Pinecone Walking Shoes",
+    "current_price": "₹1399",
+    "original_price": "₹2199",
+    "discount": "36% off",
+    "image_url": "https://img.tatacliq.com/images/i31/437Wx649H/MP000000031422895_437Wx649H_202606131256161.jpeg",
+    "product_url": "https://www.tatacliq.com/campus-mens-flynn-pinecone-walking-shoes/p-mp000000031422891",
+    "product_id": "31422891"
+  }
+]

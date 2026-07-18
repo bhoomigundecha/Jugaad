@@ -6,6 +6,7 @@ import NegotiateHeader    from "@/components/negotiate/NegotiateHeader";
 import AIOrb              from "@/components/negotiate/AIOrb";
 import LiveTranscript     from "@/components/negotiate/LiveTranscript";
 import NegotiateBottomBar from "@/components/negotiate/NegotiateBottomBar";
+import AlternativesStrip  from "@/components/negotiate/AlternativesStrip";
 import { getNegotiationWsUrl } from "@/lib/api";
 import { getSession }          from "@/lib/auth";
 
@@ -21,6 +22,7 @@ export default function NegotiatePage() {
   const [dealPrice,   setDealPrice]   = useState(null);
   const [dealNudge,   setDealNudge]   = useState("");
   const [elapsed,     setElapsed]     = useState(0);
+  const [alternatives, setAlternatives] = useState([]);
 
   const wsRef             = useRef(null);
   const mediaRecorderRef  = useRef(null);
@@ -81,6 +83,10 @@ export default function NegotiatePage() {
 
       if (msg.type === "log") {
         // silent — could surface in a debug overlay
+      }
+
+      if (msg.type === "alternatives") {
+        setAlternatives(msg.products || []);
       }
 
       if (msg.type === "deal_reached") {
@@ -251,6 +257,9 @@ export default function NegotiatePage() {
 
         {/* Transcript */}
         <LiveTranscript messages={messages} />
+
+        {/* Alternatives — Priya's find_alternatives pick, when the deal stalls */}
+        <AlternativesStrip products={alternatives} />
 
         {/* ── Deal pill — same segmented style as product cards ── */}
         <div

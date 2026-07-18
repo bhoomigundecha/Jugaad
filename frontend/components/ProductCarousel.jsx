@@ -35,6 +35,8 @@ export default function ProductCarousel({
   onNegotiate,
   glass  = true,
   layout = "scroll",
+  CardComponent = ProductCard,
+  titleColor = "#1f2937",
 }) {
   // Strip any null/undefined entries the API might return
   products = (products || []).filter(Boolean);
@@ -73,7 +75,16 @@ export default function ProductCarousel({
     <section className="w-full mb-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-3 px-0">
-        <h2 style={{ fontSize: 18, fontWeight: 900, color: "#1f2937" }}>{title}</h2>
+        <h2
+          style={{
+            fontFamily: "var(--font-playfair), Georgia, serif",
+            fontSize: 19,
+            fontWeight: 900,
+            color: titleColor,
+          }}
+        >
+          {title}
+        </h2>
         <a
           href={viewAllHref}
           style={{ fontSize: 13, fontWeight: 700, color: "#7c3aed" }}
@@ -91,7 +102,7 @@ export default function ProductCarousel({
           animate="visible"
         >
           {products.map((p) => (
-            <ProductCard
+            <CardComponent
               key={p.id}
               product={p}
               wishlisted={isWishlisted(p.id)}
@@ -114,7 +125,7 @@ export default function ProductCarousel({
           >
             {products.map((p) => (
               <div key={p.id} style={{ width: 180, flexShrink: 0 }}>
-                <ProductCard
+                <CardComponent
                   product={p}
                   wishlisted={isWishlisted(p.id)}
                   onWishlist={onWishlist}
