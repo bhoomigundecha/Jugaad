@@ -2,9 +2,9 @@
 
 # Jugaad
 
-### Mol Karo, Save Karo. An AI powered bazaar for how Bharat actually shops.
+### An AI powered bazaar for how Bharat actually shops.
 
-Jugaad is a voice first shopping app where buyers negotiate prices with an AI shopkeeper in 13 Indian languages, and vendors control the negotiation through a hidden floor price and a chosen AI persona. Built for Meesho's **Scripted By Her 2026** hackathon, theme: *Building Bharat with the Power of Agentic AI*.
+Jugaad is a voice-first shopping app where buyers negotiate prices with an AI shopkeeper in their own language, and vendors control the negotiation through a hidden floor price and a chosen AI persona. 
 
 [![Hackathon](https://img.shields.io/badge/Meesho-Scripted%20By%20Her%202026-7c3aed?style=for-the-badge)](https://jugaad-omega.vercel.app/)
 [![Status](https://img.shields.io/badge/status-live%20in%20production-success?style=for-the-badge)](https://jugaad-omega.vercel.app/)
@@ -23,13 +23,11 @@ Jugaad is a voice first shopping app where buyers negotiate prices with an AI sh
 
 > *Jugaad (n.), the Indian art of the clever, frugal fix. A workaround that just... works.*
 
-Bargaining is in India's DNA. E-commerce killed that ritual: fixed MRP, take it or leave it. So instead of one button, buyers get two.
 
 | Buy Now | Negotiate |
 |---|---|
 | Pay the listed price instantly | Open a live voice session with Jugaad, your AI shopkeeper |
 
-Jugaad bargains like a real seller: anchors high, concedes slowly, never breaks the vendor's floor price, entirely in the buyer's own language.
 
 ---
 
@@ -43,137 +41,8 @@ Jugaad bargains like a real seller: anchors high, concedes slowly, never breaks 
 | Demo video | **[ADD LINK BEFORE SUBMISSION]** | | |
 | Source code | https://github.com/bhoomigundecha/Jugaad | | |
 
-Signup also works on both apps. Buyer and vendor accounts are real, backed by the same database, not mocked.
 
 ---
-
-## The problem
-
-E-commerce brought the bazaar online, but not the experience of shopping in one. The discovery, the deal, and the dialogue make Indian market shopping feel human, and all three are missing.
-
-| Gap | In the bazaar | In e-commerce |
-|---|---|---|
-| Discovery | You describe it; the shopkeeper brings it out | Scroll through 200 results |
-| Negotiation | You bargain; both sides agree on a price | Fixed price; wait for a sale |
-| Access | Shopkeeper speaks your language | Text heavy; 600M vernacular users left out |
-
-Buyers on value focused platforms are culturally primed to negotiate but get exactly one lever: Buy Now. Meanwhile sellers sit on aging inventory with no dynamic way to move it. Hold firm and don't convert, or blanket discount and burn margin.
-
-| Metric | Reality |
-|---|---|
-| COD order share on Meesho | ~67% |
-| Return rate on COD orders | 40 to 50% |
-| #1 cited return reason | *"Price felt too high"* |
-| Cart abandonment (first visit) | ~72% |
-| Platforms offering negotiation | 0 |
-
-**Why hasn't anyone solved this?** Language (most AI shopping bots are English only; Meesho's core users aren't), voice (negotiation is spoken and emotional, not a text chatbox), and pricing infrastructure (nothing exists for safe, per buyer dynamic pricing). Jugaad is built against all three.
-
-## The solution
-
-An AI negotiation layer between buyer and seller, modeled on both sides:
-
-- **Buyers** speak or type in their own language (13 Indian languages, detected fresh every turn), discover real products from a 936 item catalog, and haggle live with an AI agent representing that seller.
-- **Vendors** list products, set a **floor price** (a hard minimum, never shown to buyers), and pick the AI's negotiation persona per product: **Meethi Didi** (warm, concedes faster, moves slow stock), **Vyapari** (direct, business like), or **Mol-Bhav Queen** (anchors high, holds firm, protects margin).
-- If a negotiation stalls, the AI pivots and pitches real alternative products from the same seller instead of repeating itself.
-
----
-
-## AI integration
-
-### The agents
-
-| Agent | File | What it does |
-|---|---|---|
-| Discovery Agent | `backend/agents/discovery_agent.py` | Voice/text product search and shopping list management. Stateless per turn. Tools: `search_product`, `get_product_details`, `update_shopping_list`, `recommend_outfit` |
-| Negotiation Agent | `backend/agents/negotiation_agent.py` | Live price negotiation over WebSocket. Stateful per session (round count, offer history, floor/target/anchor). Tools: `close_deal`, `find_alternatives`, `get_product_details` |
-| Price Intelligence | `backend/agents/price_intelligence.py` | **Deterministic, not LLM.** Computes floor price, target price, opening anchor, and persona tactics before the conversation starts |
-| Deal Closing Agent | `backend/agents/deal_closing_agent.py` | Detects `DEAL_CONFIRMED`, locks the negotiated price, writes the deal to the database |
-| Learning Agent | `backend/agents/learning_agent.py` | Logs deal outcomes, tactics used, and margin saved for future persona analytics |
-
-### The models
-
-| Layer | Model / Service | Why this choice |
-|---|---|---|
-| Reasoning + tool calling | Llama 3.3 70B on **Groq** (`llama-3.3-70b-versatile`) | LPU inference speed. A haggle must feel like live conversation, not a lagging chatbot |
-| Speech to text | **Sarvam Saaras v3** (auto language detection) | Built for Indian languages and Hinglish code switching; detects the buyer's language every turn |
-| Text to speech | **Sarvam Bulbul v3** | Natural Indian language voice replies |
-| Embeddings | **Qwen3-Embedding-8B** (4096 dim) via Nebius | Spoken queries don't match catalog text. "Something for a wedding" must match "Ethnic Wear: Sherwani" |
-| Vector search | **Qdrant Cloud** | Hybrid retrieval: strict keyword plus vector match first, pure semantic fallback |
-
-**Why these, specifically:** Groq over OpenAI/Anthropic because sub 200ms token generation on LPU hardware keeps the negotiation feeling live; a 3 second thinking pause kills it. Sarvam over ElevenLabs/Google because it is built natively for Indian phonetics and code switching, not bolted on after English. WebSocket over REST polling because negotiation is bidirectional; REST would tax every exchange with 400 to 800ms of dead air.
-
-### The guardrail that makes it trustworthy
-
-The LLM handles the conversation; deterministic code handles the numbers. Price Intelligence computes the floor (hard minimum), target, opening anchor, and tactic set per persona **before any LLM call**. The agent cannot close below the floor no matter what the buyer says. It is enforced server side as a constraint, not a prompt suggestion.
-
-### Stall detection
-
-The session tracker watches negotiation rounds and buyer offer movement. When a session looks stuck, it injects an internal nudge that pushes the agent to call `find_alternatives`, surfacing similar products from the same seller, instead of repeating the same counter offer.
-
----
-
-## Architecture
-
-<<<<<<< HEAD
-![Architecture](jugaad-architecture-flow.png)
-=======
-**The full AI voice negotiation pipeline**, from mic input to closed deal, including the discovery and learning lane:
-
-![Jugaad AI voice negotiation pipeline](jugaad-ai-pipeline.png)
-
-**High level system view** across the five layers:
-
-![High level architecture](jugaad-architecture-flow.png)
->>>>>>> 601f9d3 (External files)
-
-**Request flow (negotiation):**
-
-```mermaid
-sequenceDiagram
-    participant B as Buyer
-    participant F as Frontend
-    participant W as WebSocket (ws.py)
-    participant S as Sarvam STT/TTS
-    participant J as Jugaad Agent (Groq Llama 3.3 70B)
-
-    B->>F: Taps "Negotiate" on a product
-    F->>W: Opens session (Price Intelligence computes floor/target/anchor first)
-    W->>J: Jugaad greets the buyer in their language
-    B->>F: Speaks (mic captured via MediaRecorder)
-    F->>W: Streams audio (base64)
-    W->>S: Speech to text (Saaras v3, language auto detected per turn)
-    S->>J: Transcript + negotiation context
-    J->>S: Reply text (within hard price constraints)
-    S->>F: Bulbul v3 audio streams back, plays live
-    F->>B: Live transcript on screen
-    Note over J: Buyer agrees, DEAL_CONFIRMED at negotiated price
-    J->>F: Price locked, deal written to DB
-    F->>B: Checkout + UPI cashback nudge
-```
-
-Three independently deployed services: FastAPI backend on Render (persistent disk, always on), Next.js buyer app and Vite vendor app on Vercel. Both frontends share one backend and one database. A vendor listing appears on the buyer side in the same request cycle, no sync step.
-
-## Repository structure
-
-```
-jugaad/
-├── backend/                  # FastAPI + Python
-│   ├── main.py               # App entry, CORS, auto seed on empty DB
-│   ├── database.py           # SQLAlchemy models
-│   ├── seed.py               # Seeds the 936 product catalog
-│   ├── agents/               # 5 agents (see AI integration above)
-│   ├── tools/                # Tool implementations for the agents
-│   ├── routers/              # auth.py · buyer.py · vendor.py · ws.py
-│   ├── voice/                # stt.py · tts.py · language_detect.py
-│   ├── scripts/              # ingest_qdrant.py · classify_products.py
-│   └── data/                 # Scraped + normalized catalog JSON
-├── frontend/                 # Buyer app: Next.js 16, App Router
-│   ├── app/                  # home · product/[id] · negotiate/[sessionId] · checkout
-│   ├── components/           # AIOrb, LiveTranscript, ProductCard, ...
-│   └── lib/                  # API client, auth/session
-└── vendor/                   # Vendor app: Vite + React + Tailwind 4
-```
 
 ---
 
@@ -255,6 +124,129 @@ VITE_FRONTEND_URL=http://localhost:3000
 
 ---
 
+## The problem
+
+E-commerce brought the bazaar online, but not the experience of shopping in one. The discovery, the deal, and the dialogue make Indian market shopping feel human, and all three are missing.
+
+| Gap | In the bazaar | In e-commerce |
+|---|---|---|
+| Discovery | You describe it; the shopkeeper brings it out | Scroll through 200 results |
+| Negotiation | You bargain; both sides agree on a price | Fixed price; wait for a sale |
+| Access | Shopkeeper speaks your language | Text heavy; 600M vernacular users left out |
+
+Buyers on value focused platforms are culturally primed to negotiate but get exactly one lever: Buy Now. Meanwhile sellers sit on aging inventory with no dynamic way to move it. Hold firm and don't convert, or blanket discount and burn margin.
+
+| Metric | Reality |
+|---|---|
+| COD order share on Meesho | ~67% |
+| Return rate on COD orders | 40 to 50% |
+| #1 cited return reason | *"Price felt too high"* |
+| Cart abandonment (first visit) | ~72% |
+| Platforms offering negotiation | 0 |
+
+## The solution
+
+An AI negotiation layer between buyer and seller, modeled on both sides:
+
+- **Buyers** speak or type in their own language, discover real products from an item catalog, and haggle live with an AI agent representing that seller.
+- **Vendors** list products, set a **floor price** (a hard minimum, never shown to buyers), and pick the AI's negotiation persona per product: **Meethi Didi** (warm, concedes faster, moves slow stock), **Vyapari** (direct, business like), or **Mol-Bhav Queen** (anchors high, holds firm, protects margin).
+- If a negotiation stalls, the AI pivots and pitches real alternative products from the same seller instead of repeating itself.
+
+---
+
+## AI integration
+
+### The agents
+
+| Agent | File | What it does |
+|---|---|---|
+| Discovery Agent | `backend/agents/discovery_agent.py` | Voice/text product search and shopping list management. Stateless per turn. Tools: `search_product`, `get_product_details`, `update_shopping_list`, `recommend_outfit` |
+| Negotiation Agent | `backend/agents/negotiation_agent.py` | Live price negotiation over WebSocket. Stateful per session (round count, offer history, floor/target/anchor). Tools: `close_deal`, `find_alternatives`, `get_product_details` |
+| Price Intelligence | `backend/agents/price_intelligence.py` | **Deterministic, not LLM.** Computes floor price, target price, opening anchor, and persona tactics before the conversation starts |
+| Deal Closing Agent | `backend/agents/deal_closing_agent.py` | Detects `DEAL_CONFIRMED`, locks the negotiated price, writes the deal to the database |
+| Learning Agent | `backend/agents/learning_agent.py` | Logs deal outcomes, tactics used, and margin saved for future persona analytics |
+
+### The models
+
+| Layer | Model / Service | Why this choice |
+|---|---|---|
+| Reasoning + tool calling | Llama 3.3 70B on **Groq** (`llama-3.3-70b-versatile`) | LPU inference speed. A haggle must feel like live conversation, not a lagging chatbot |
+| Speech to text | **Sarvam Saaras v3** (auto language detection) | Built for Indian languages and Hinglish code switching; detects the buyer's language every turn |
+| Text to speech | **Sarvam Bulbul v3** | Natural Indian language voice replies |
+| Embeddings | **Qwen3-Embedding-8B** (4096 dim) via Nebius | Spoken queries don't match catalog text. "Something for a wedding" must match "Ethnic Wear: Sherwani" |
+| Vector search | **Qdrant Cloud** | Hybrid retrieval: strict keyword plus vector match first, pure semantic fallback |
+
+**Why these, specifically:** Groq over OpenAI/Anthropic because sub 200ms token generation on LPU hardware keeps the negotiation feeling live; a 3 second thinking pause kills it. Sarvam over ElevenLabs/Google because it is built natively for Indian phonetics and code switching, not bolted on after English. WebSocket over REST polling because negotiation is bidirectional; REST would tax every exchange with 400 to 800ms of dead air.
+
+### The guardrail that makes it trustworthy
+
+The LLM handles the conversation; deterministic code handles the numbers. Price Intelligence computes the floor (hard minimum), target, opening anchor, and tactic set per persona **before any LLM call**. The agent cannot close below the floor no matter what the buyer says. It is enforced server side as a constraint, not a prompt suggestion.
+
+### Stall detection
+
+The session tracker watches negotiation rounds and buyer offer movement. When a session looks stuck, it injects an internal nudge that pushes the agent to call `find_alternatives`, surfacing similar products from the same seller, instead of repeating the same counter offer.
+
+---
+
+## Architecture
+
+**The full AI voice negotiation pipeline**, from mic input to closed deal, including the discovery and learning lane:
+
+![Jugaad AI voice negotiation pipeline](jugaad-ai-pipeline.png)
+
+**High level system view** across the five layers:
+
+
+**Request flow (negotiation):**
+
+```mermaid
+sequenceDiagram
+    participant B as Buyer
+    participant F as Frontend
+    participant W as WebSocket (ws.py)
+    participant S as Sarvam STT/TTS
+    participant J as Jugaad Agent (Groq Llama 3.3 70B)
+
+    B->>F: Taps "Negotiate" on a product
+    F->>W: Opens session (Price Intelligence computes floor/target/anchor first)
+    W->>J: Jugaad greets the buyer in their language
+    B->>F: Speaks (mic captured via MediaRecorder)
+    F->>W: Streams audio (base64)
+    W->>S: Speech to text (Saaras v3, language auto detected per turn)
+    S->>J: Transcript + negotiation context
+    J->>S: Reply text (within hard price constraints)
+    S->>F: Bulbul v3 audio streams back, plays live
+    F->>B: Live transcript on screen
+    Note over J: Buyer agrees, DEAL_CONFIRMED at negotiated price
+    J->>F: Price locked, deal written to DB
+    F->>B: Checkout + UPI cashback nudge
+```
+
+Three independently deployed services: FastAPI backend on Render (persistent disk, always on), Next.js buyer app and React.js vendor app on Vercel. Both frontends share one backend and one database. A vendor listing appears on the buyer side in the same request cycle, no sync step.
+
+## Repository structure
+
+```
+jugaad/
+├── backend/                  # FastAPI + Python
+│   ├── main.py               # App entry, CORS, auto seed on empty DB
+│   ├── database.py           # SQLAlchemy models
+│   ├── seed.py               # Seeds the 936 product catalog
+│   ├── agents/               # 5 agents (see AI integration above)
+│   ├── tools/                # Tool implementations for the agents
+│   ├── routers/              # auth.py · buyer.py · vendor.py · ws.py
+│   ├── voice/                # stt.py · tts.py · language_detect.py
+│   ├── scripts/              # ingest_qdrant.py · classify_products.py
+│   └── data/                 # Scraped + normalized catalog JSON
+├── frontend/                 # Buyer app: Next.js 16, App Router
+│   ├── app/                  # home · product/[id] · negotiate/[sessionId] · checkout
+│   ├── components/           # AIOrb, LiveTranscript, ProductCard, ...
+│   └── lib/                  # API client, auth/session
+└── vendor/                   # Vendor app: Vite + React + Tailwind 4
+```
+
+---
+
 ## Open source attribution
 
 ### Backend (Python)
@@ -320,7 +312,18 @@ Catalog of 936 products normalized from a Tata CLiQ scrape (`backend/scraper_tat
 
 ---
 
-## Why this wins for Meesho
+## Why not just wait for sales?
+
+Because a sale is a blanket discount, and a negotiation is price discovery. They are not the same tool.
+
+| | A sale | A negotiation |
+|---|---|---|
+| Who gets the discount | Everyone, including buyers who would have paid full price | Only the buyer who asks, and only as much as it takes to close |
+| When it happens | Whenever the platform schedules it | The moment the buyer wants the product |
+| Who controls the price | The platform | The vendor, through a hard floor price |
+| What it trains buyers to do | Never pay full price, always hold out | Buy today, because the deal is earned now |
+| Margin outcome | Burned across the whole catalog | Protected per unit: price sensitive buyers close near floor, everyone else closes near MRP |
+ 
 
 Zero behavior change: buyers already negotiate in real life; Jugaad digitizes the instinct. Seller safe by design: the floor price is code, not a guideline, so vendors actually opt in. It kills the sale waiting cycle by collapsing the discount wait into one conversation, and every closed deal fires a UPI cashback nudge at peak buyer intent, attacking the COD return problem directly. Architecturally it is a pluggable WebSocket microservice that drops alongside an existing catalog.
 
