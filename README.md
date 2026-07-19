@@ -14,6 +14,18 @@ Jugaad is a voice-first shopping app where buyers negotiate prices with an AI sh
 
 ---
 
+> *Jugaad (n.) — the Indian art of the clever, frugal fix. A workaround that just... works.*
+
+Bargaining is in India's DNA. E-commerce killed that ritual: fixed MRP, take it or leave it. So instead of one button, buyers get two:
+
+| Buy Now | Negotiate |
+|---|---|
+| Pay the listed price instantly | Open a live voice session with Priya, your AI shopkeeper |
+
+Priya bargains like a real seller — anchors high, concedes slowly, never breaks the vendor's floor price — entirely in the buyer's own language.
+
+---
+
 ## Live deployment
 
 | Service | URL |
@@ -40,6 +52,16 @@ E-commerce brought the bazaar online, but not the experience of shopping in one.
 | Access | Shopkeeper speaks your language | Text-heavy; 600M vernacular users left out |
 
 Buyers on value-focused platforms are culturally primed to negotiate but get exactly one lever: Buy Now. Meanwhile sellers sit on aging inventory with no dynamic way to move it — hold firm and don't convert, or blanket-discount and burn margin.
+
+| Metric | Reality |
+|---|---|
+| COD order share on Meesho | ~67% |
+| Return rate on COD orders | 40–50% |
+| #1 cited return reason | *"Price felt too high"* |
+| Cart abandonment (first visit) | ~72% |
+| Platforms offering negotiation | 0 |
+
+**Why hasn't anyone solved this?** Language (most AI shopping bots are English-only; Meesho's core users aren't), voice (negotiation is spoken and emotional, not a text chatbox), and pricing infrastructure (nothing exists for safe, per-buyer dynamic pricing). Jugaad is built against all three.
 
 ## The solution
 
@@ -73,6 +95,8 @@ An AI negotiation layer between buyer and seller, modeled on both sides:
 | Embeddings | **Qwen3-Embedding-8B** (4096-dim) via Nebius | Spoken queries don't match catalog text — "something for a wedding" must match "Ethnic Wear: Sherwani" |
 | Vector search | **Qdrant Cloud** | Hybrid retrieval: strict keyword+vector match first, pure semantic fallback |
 
+**Why these, specifically:** Groq over OpenAI/Anthropic because sub-200ms token generation on LPU hardware keeps the negotiation feeling live — a 3-second thinking pause kills it. Sarvam over ElevenLabs/Google because it's built natively for Indian phonetics and code-switching, not bolted on after English. WebSocket over REST polling because negotiation is bidirectional — REST would tax every exchange with 400–800ms of dead air.
+
 ### The guardrail that makes it trustworthy
 
 The LLM handles the conversation; deterministic code handles the numbers. Price Intelligence computes the floor (hard minimum), target, opening anchor, and tactic set per persona **before any LLM call**. The agent cannot close below the floor no matter what the buyer says — it is enforced server-side as a constraint, not a prompt suggestion.
@@ -87,7 +111,30 @@ The session tracker watches negotiation rounds and buyer offer movement. When a 
 
 ![Architecture](jugaad-architecture-flow.png)
 
-**Request flow (negotiation):** buyer speaks → `MediaRecorder` streams base64 audio over WebSocket (`routers/ws.py`) → Sarvam STT transcribes + detects language → Negotiation Agent (Groq) reasons within Price Intelligence constraints → reply text → Sarvam TTS → audio + live transcript stream back to the buyer.
+**Request flow (negotiation):**
+
+```mermaid
+sequenceDiagram
+    participant B as Buyer
+    participant F as Frontend
+    participant W as WebSocket (ws.py)
+    participant S as Sarvam STT/TTS
+    participant P as Negotiation Agent (Groq Llama 3.3 70B)
+
+    B->>F: Taps "Negotiate" on a product
+    F->>W: Opens session (Price Intelligence computes floor/target/anchor first)
+    W->>P: Priya greets the buyer in their language
+    B->>F: Speaks (mic captured via MediaRecorder)
+    F->>W: Streams audio (base64)
+    W->>S: Speech to text (Saaras v3, language auto-detected per turn)
+    S->>P: Transcript + negotiation context
+    P->>S: Reply text (within hard price constraints)
+    S->>F: Bulbul v3 audio streams back, plays live
+    F->>B: Live transcript on screen
+    Note over P: Buyer agrees → DEAL_CONFIRMED at negotiated price
+    P->>F: Price locked, deal written to DB
+    F->>B: Checkout + UPI cashback nudge
+```
 
 Three independently deployed services: FastAPI backend on Render (persistent disk, always-on), Next.js buyer app and Vite vendor app on Vercel. Both frontends share one backend and one database — a vendor listing appears on the buyer side in the same request cycle, no sync step.
 
@@ -252,10 +299,20 @@ Catalog of 936 products normalized from a Tata CLiQ scrape (`backend/scraper_tat
 
 ---
 
+## Why this wins for Meesho
+
+Zero behavior change — buyers already negotiate in real life; Jugaad digitizes the instinct. Seller-safe by design — the floor price is code, not a guideline, so vendors actually opt in. It kills the sale-waiting cycle by collapsing the discount wait into one conversation, and every closed deal fires a UPI cashback nudge at peak buyer intent — attacking the COD return problem directly. Architecturally it's a pluggable WebSocket microservice that drops alongside an existing catalog.
+
 ## Known limitations and roadmap
 
+Honest current state:
+
+- **Payment gateway is simulated** — checkout records the payment method (prepaid/COD) and locks the deal price, but no real payment is processed.
+- **Auth is real but demo-grade** — signup creates genuine DB-backed accounts (plus seeded demo credentials for judges), but sessions are simple and passwords are not yet hashed. JWT + hashing is the first post-hackathon hardening step.
+- **No automated test suite yet** — verification is currently manual (see the checklist above).
 - Language-detection edge cases for voice input and search-relevance tuning are in active refinement.
-- Roadmap: per-category negotiation personas, vendor-side persona analytics ("this listing has sat unsold 30 days — switch it to Meethi Didi"), group mol-bhav (bring-a-friend bulk bargaining), and a buyer-visible fairness layer showing the AI negotiates in good faith.
+
+Roadmap: per-category negotiation personas, vendor-side persona analytics ("this listing has sat unsold 30 days — switch it to Meethi Didi"), group mol-bhav (bring-a-friend bulk bargaining), and a buyer-visible fairness layer showing the AI negotiates in good faith.
 
 ---
 
