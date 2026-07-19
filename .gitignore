@@ -1,2 +1,86 @@
-.DS_Store
+# ==========================
+# Dependencies
+# ==========================
+node_modules/
+
+# ==========================
+# Next.js
+# ==========================
+.next/
+out/
+
+# ==========================
+# React / Build
+# ==========================
+dist/
+build/
+
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.*
+!.env.example
+
+# ==========================
+# Logs
+# ==========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================
+# Cache
+# ==========================
+.cache/
+.parcel-cache/
+.turbo/
+.vercel/
+.eslintcache
+*.tsbuildinfo
+
+# ==========================
+# Coverage
+# ==========================
+coverage/
+.nyc_output/
+
+# ==========================
+# Claude Code
+# ==========================
 .claude/
+.claude-code/
+CLAUDE.md
+.claude.json
+.claude.jsonl
+
+# ==========================
+# Editors
+# ==========================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+.idea/
+*.swp
+*.swo
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# ==========================
+# Temporary Files
+# ==========================
+tmp/
+temp/
+*.tmp
