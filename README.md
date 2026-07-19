@@ -115,7 +115,17 @@ The session tracker watches negotiation rounds and buyer offer movement. When a 
 
 ## Architecture
 
+<<<<<<< HEAD
 ![Architecture](jugaad-architecture-flow.png)
+=======
+**The full AI voice negotiation pipeline**, from mic input to closed deal, including the discovery and learning lane:
+
+![Jugaad AI voice negotiation pipeline](jugaad-ai-pipeline.png)
+
+**High level system view** across the five layers:
+
+![High level architecture](jugaad-architecture-flow.png)
+>>>>>>> 601f9d3 (External files)
 
 **Request flow (negotiation):**
 

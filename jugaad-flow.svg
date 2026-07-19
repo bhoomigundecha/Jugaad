@@ -1,0 +1,349 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 960" width="1380" height="960"
+  font-family="'Segoe UI', system-ui, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 9 3, 0 6" fill="#ffdbb1"/>
+    </marker>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000055"/>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="1380" height="960" fill="#590946"/>
+
+  <!-- TITLE -->
+  <text x="690" y="46" text-anchor="middle" font-size="22" font-weight="800"
+    fill="#ffdbb1" letter-spacing="4">JUGAAD  AI VOICE NEGOTIATION</text>
+  <text x="690" y="66" text-anchor="middle" font-size="11" fill="#ffdbb188" letter-spacing="2">
+    mol karo. save karo.
+  </text>
+  <line x1="60" y1="78" x2="1320" y2="78" stroke="#ffdbb133" stroke-width="1"/>
+
+  <!-- ══ COLUMN HEADERS ══ -->
+  <text x="128" y="99"  text-anchor="middle" font-size="9"  fill="#ffdbb188" font-weight="700" letter-spacing="2">COLUMN 1</text>
+  <text x="128" y="113" text-anchor="middle" font-size="12" fill="#ffdbb1"   font-weight="800">INPUT</text>
+
+  <text x="368" y="99"  text-anchor="middle" font-size="9"  fill="#ffdbb188" font-weight="700" letter-spacing="2">COLUMN 2</text>
+  <text x="368" y="113" text-anchor="middle" font-size="12" fill="#ffdbb1"   font-weight="800">TRANSPORT</text>
+
+  <text x="620" y="99"  text-anchor="middle" font-size="9"  fill="#ffdbb188" font-weight="700" letter-spacing="2">COLUMN 3</text>
+  <text x="620" y="113" text-anchor="middle" font-size="12" fill="#ffdbb1"   font-weight="800">VOICE LAYER</text>
+
+  <text x="888" y="99"  text-anchor="middle" font-size="9"  fill="#ffdbb188" font-weight="700" letter-spacing="2">COLUMN 4</text>
+  <text x="888" y="113" text-anchor="middle" font-size="12" fill="#ffdbb1"   font-weight="800">AI CORE</text>
+
+  <text x="1158" y="99"  text-anchor="middle" font-size="9"  fill="#ffdbb188" font-weight="700" letter-spacing="2">COLUMN 5</text>
+  <text x="1158" y="113" text-anchor="middle" font-size="12" fill="#ffdbb1"   font-weight="800">DATA + OUTPUT</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- COLUMN 1 — INPUT                       -->
+  <!-- ══════════════════════════════════════ -->
+
+  <!-- Buyer -->
+  <rect x="52" y="130" width="152" height="130" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <!-- person icon -->
+  <circle cx="128" cy="160" r="14" fill="#590946" opacity=".15"/>
+  <circle cx="128" cy="155" r="7" fill="#590946"/>
+  <path d="M114 174 Q128 167 142 174" stroke="#590946" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="128" y="200" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Buyer</text>
+  <text x="128" y="216" text-anchor="middle" font-size="10" fill="#590946aa">Mobile · speaks via mic</text>
+  <text x="128" y="232" text-anchor="middle" font-size="10" fill="#590946aa">Hindi / 13 languages</text>
+  <text x="128" y="248" text-anchor="middle" font-size="10" fill="#590946aa">Selects language</text>
+
+  <!-- Vendor -->
+  <rect x="52" y="300" width="152" height="130" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <!-- shop icon -->
+  <circle cx="128" cy="328" r="14" fill="#590946" opacity=".15"/>
+  <rect x="120" y="326" width="16" height="12" rx="2" fill="none" stroke="#590946" stroke-width="2"/>
+  <path d="M120 326 L128 319 L136 326" fill="none" stroke="#590946" stroke-width="2"/>
+  <rect x="124" y="331" width="8" height="7" rx="1" fill="#590946"/>
+  <text x="128" y="354" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Vendor</text>
+  <text x="128" y="370" text-anchor="middle" font-size="10" fill="#590946aa">Sets floor price</text>
+  <text x="128" y="386" text-anchor="middle" font-size="10" fill="#590946aa">Dashboard · AI persona</text>
+  <text x="128" y="402" text-anchor="middle" font-size="10" fill="#590946aa">Soft / Haggler / Direct</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- COLUMN 2 — TRANSPORT                   -->
+  <!-- ══════════════════════════════════════ -->
+
+  <!-- Next.js 16 -->
+  <rect x="292" y="130" width="152" height="150" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="368" cy="160" r="14" fill="#590946" opacity=".15"/>
+  <text x="360" y="165" font-size="14" font-weight="900" fill="#590946">&lt;/&gt;</text>
+  <text x="368" y="194" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Next.js 16</text>
+  <text x="368" y="210" text-anchor="middle" font-size="10" fill="#590946aa">/home  /product/[id]</text>
+  <text x="368" y="226" text-anchor="middle" font-size="10" fill="#590946aa">/negotiate/[s]  /checkout</text>
+  <text x="368" y="242" text-anchor="middle" font-size="10" fill="#590946aa">MediaRecorder API</text>
+  <text x="368" y="258" text-anchor="middle" font-size="10" fill="#590946aa">Tailwind · Framer Motion</text>
+
+  <!-- WebSocket -->
+  <rect x="292" y="320" width="152" height="130" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="368" cy="350" r="14" fill="#590946" opacity=".15"/>
+  <!-- swap arrows icon -->
+  <path d="M358 346 L378 346" stroke="#590946" stroke-width="2" marker-end="url(#arr)" fill="none"/>
+  <path d="M378 354 L358 354" stroke="#590946" stroke-width="2" marker-end="url(#arr)" fill="none"/>
+  <text x="368" y="378" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">WebSocket</text>
+  <text x="368" y="394" text-anchor="middle" font-size="10" fill="#590946aa">ws.py · persistent pipe</text>
+  <text x="368" y="410" text-anchor="middle" font-size="10" fill="#590946aa">base64 audio · &lt;200ms</text>
+  <text x="368" y="426" text-anchor="middle" font-size="10" fill="#590946aa">JSON message protocol</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- COLUMN 3 — VOICE LAYER                 -->
+  <!-- ══════════════════════════════════════ -->
+
+  <!-- Sarvam STT -->
+  <rect x="544" y="130" width="152" height="140" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="620" cy="160" r="14" fill="#590946" opacity=".15"/>
+  <!-- mic -->
+  <rect x="614" y="149" width="12" height="16" rx="6" fill="none" stroke="#590946" stroke-width="2"/>
+  <path d="M608 162 Q608 172 620 172 Q632 172 632 162" stroke="#590946" stroke-width="2" fill="none"/>
+  <line x1="620" y1="172" x2="620" y2="177" stroke="#590946" stroke-width="2"/>
+  <text x="620" y="196" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Sarvam STT</text>
+  <text x="620" y="212" text-anchor="middle" font-size="10" fill="#590946aa">Saaras v3</text>
+  <text x="620" y="228" text-anchor="middle" font-size="10" fill="#590946aa">Audio → text</text>
+  <text x="620" y="244" text-anchor="middle" font-size="10" fill="#590946aa">Auto lang detect</text>
+
+  <!-- Sarvam TTS -->
+  <rect x="544" y="316" width="152" height="140" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="620" cy="346" r="14" fill="#590946" opacity=".15"/>
+  <!-- speaker -->
+  <path d="M611 340 L611 352 L617 352 L625 358 L625 334 L617 340 Z" fill="#590946"/>
+  <path d="M629 338 Q635 346 629 354" stroke="#590946" stroke-width="2" fill="none"/>
+  <path d="M633 334 Q641 346 633 358" stroke="#590946" stroke-width="2" fill="none"/>
+  <text x="620" y="374" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Sarvam TTS</text>
+  <text x="620" y="390" text-anchor="middle" font-size="10" fill="#590946aa">Bulbul v3 · Manisha</text>
+  <text x="620" y="406" text-anchor="middle" font-size="10" fill="#590946aa">Text → WAV audio</text>
+  <text x="620" y="422" text-anchor="middle" font-size="10" fill="#590946aa">Streams to browser</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- COLUMN 4 — AI CORE                     -->
+  <!-- ══════════════════════════════════════ -->
+
+  <!-- NegotiationAgent -->
+  <rect x="796" y="130" width="184" height="170" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="888" cy="162" r="14" fill="#590946" opacity=".15"/>
+  <!-- brain dots -->
+  <ellipse cx="888" cy="162" rx="10" ry="8" fill="none" stroke="#590946" stroke-width="2"/>
+  <circle cx="884" cy="159" r="2" fill="#590946"/>
+  <circle cx="892" cy="159" r="2" fill="#590946"/>
+  <circle cx="888" cy="165" r="2" fill="#590946"/>
+  <text x="888" y="190" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Negotiation Agent</text>
+  <text x="888" y="206" text-anchor="middle" font-size="10" fill="#590946aa">Groq Llama 3.3 70B</text>
+  <text x="888" y="222" text-anchor="middle" font-size="10" fill="#590946aa">Scarcity · Anchor-high</text>
+  <text x="888" y="238" text-anchor="middle" font-size="10" fill="#590946aa">UPI nudge · 3 personas</text>
+  <text x="888" y="254" text-anchor="middle" font-size="10" fill="#590946aa">Tool calling · stall detect</text>
+  <text x="888" y="270" text-anchor="middle" font-size="10" fill="#590946aa">"Jugaad" bazaar AI</text>
+  <text x="888" y="286" text-anchor="middle" font-size="10" fill="#590946aa">Soft / To-the-point / Haggler</text>
+
+  <!-- PriceIntelligence -->
+  <rect x="796" y="342" width="184" height="130" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="888" cy="370" r="14" fill="#590946" opacity=".15"/>
+  <!-- bar chart -->
+  <rect x="880" y="374" width="5" height="7" fill="#590946"/>
+  <rect x="887" y="368" width="5" height="13" fill="#590946"/>
+  <rect x="875" y="378" width="5" height="3" fill="#590946"/>
+  <text x="888" y="398" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Price Intelligence</text>
+  <text x="888" y="414" text-anchor="middle" font-size="10" fill="#590946aa">Floor price enforcement</text>
+  <text x="888" y="430" text-anchor="middle" font-size="10" fill="#590946aa">Margin calc · opening counter</text>
+  <text x="888" y="446" text-anchor="middle" font-size="10" fill="#590946aa">Hard constraint</text>
+  <text x="888" y="462" text-anchor="middle" font-size="10" fill="#590946aa">Tactics selection</text>
+
+  <!-- DealClosingAgent -->
+  <rect x="796" y="514" width="184" height="120" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="888" cy="542" r="14" fill="#590946" opacity=".15"/>
+  <!-- check circle -->
+  <circle cx="888" cy="542" r="9" fill="none" stroke="#590946" stroke-width="2"/>
+  <path d="M883 542 L887 547 L894 537" stroke="#590946" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="888" y="570" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Deal Closing Agent</text>
+  <text x="888" y="586" text-anchor="middle" font-size="10" fill="#590946aa">Detects DEAL_CONFIRMED</text>
+  <text x="888" y="602" text-anchor="middle" font-size="10" fill="#590946aa">Locks negotiated price</text>
+  <text x="888" y="618" text-anchor="middle" font-size="10" fill="#590946aa">Logs to Learning Agent</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- COLUMN 5 — DATA + OUTPUT               -->
+  <!-- ══════════════════════════════════════ -->
+
+  <!-- SQLite -->
+  <rect x="1060" y="130" width="160" height="150" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="1140" cy="160" r="14" fill="#590946" opacity=".15"/>
+  <!-- db cylinder -->
+  <ellipse cx="1140" cy="154" rx="9" ry="4" fill="#590946"/>
+  <rect x="1131" y="154" width="18" height="10" fill="#7a2055"/>
+  <ellipse cx="1140" cy="164" rx="9" ry="4" fill="#590946"/>
+  <text x="1140" y="190" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">SQLite</text>
+  <text x="1140" y="206" text-anchor="middle" font-size="10" fill="#590946aa">Products · Buyers</text>
+  <text x="1140" y="222" text-anchor="middle" font-size="10" fill="#590946aa">Vendors · Negotiations</text>
+  <text x="1140" y="238" text-anchor="middle" font-size="10" fill="#590946aa">Messages · Shopping list</text>
+  <text x="1140" y="254" text-anchor="middle" font-size="10" fill="#590946aa">Full transcripts</text>
+  <text x="1140" y="270" text-anchor="middle" font-size="10" fill="#590946aa">Deal history</text>
+
+  <!-- Checkout -->
+  <rect x="1060" y="326" width="160" height="130" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="1140" cy="354" r="14" fill="#590946" opacity=".15"/>
+  <!-- receipt -->
+  <rect x="1131" y="343" width="18" height="20" rx="2" fill="none" stroke="#590946" stroke-width="2"/>
+  <line x1="1134" y1="349" x2="1146" y2="349" stroke="#590946" stroke-width="1.5"/>
+  <line x1="1134" y1="354" x2="1146" y2="354" stroke="#590946" stroke-width="1.5"/>
+  <line x1="1134" y1="359" x2="1141" y2="359" stroke="#590946" stroke-width="1.5"/>
+  <text x="1140" y="380" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Checkout</text>
+  <text x="1140" y="396" text-anchor="middle" font-size="10" fill="#590946aa">Locked final price</text>
+  <text x="1140" y="412" text-anchor="middle" font-size="10" fill="#590946aa">UPI cashback nudge</text>
+  <text x="1140" y="428" text-anchor="middle" font-size="10" fill="#590946aa">Payment redirect</text>
+  <text x="1140" y="444" text-anchor="middle" font-size="10" fill="#590946aa">COD → prepaid push</text>
+
+  <!-- Response to Buyer -->
+  <rect x="1060" y="502" width="160" height="140" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="1140" cy="530" r="14" fill="#590946" opacity=".15"/>
+  <!-- phone -->
+  <rect x="1132" y="519" width="16" height="22" rx="3" fill="none" stroke="#590946" stroke-width="2"/>
+  <line x1="1137" y1="537" x2="1147" y2="537" stroke="#590946" stroke-width="2"/>
+  <text x="1140" y="558" text-anchor="middle" font-size="14" font-weight="800" fill="#590946">Response</text>
+  <text x="1140" y="574" text-anchor="middle" font-size="10" fill="#590946aa">Voice audio plays</text>
+  <text x="1140" y="590" text-anchor="middle" font-size="10" fill="#590946aa">Live transcript UI</text>
+  <text x="1140" y="606" text-anchor="middle" font-size="10" fill="#590946aa">AI orb animation</text>
+  <text x="1140" y="622" text-anchor="middle" font-size="10" fill="#590946aa">Deal confirmed ✓</text>
+  <text x="1140" y="638" text-anchor="middle" font-size="10" fill="#590946aa">Alternatives shown</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- ARROWS — Col 1 → Col 2                 -->
+  <!-- ══════════════════════════════════════ -->
+  <!-- Buyer → Next.js -->
+  <line x1="205" y1="195" x2="290" y2="195" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Vendor → WebSocket -->
+  <line x1="205" y1="385" x2="290" y2="385" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Buyer ↓ Vendor -->
+  <line x1="128" y1="261" x2="128" y2="298" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ══ Col 2 → Col 3 ══ -->
+  <!-- Next.js → STT -->
+  <line x1="445" y1="200" x2="542" y2="200" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- WebSocket → TTS -->
+  <line x1="445" y1="385" x2="542" y2="385" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Next.js ↓ WebSocket -->
+  <line x1="368" y1="281" x2="368" y2="318" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ══ Col 3 → Col 4 ══ -->
+  <!-- STT → NegotiationAgent -->
+  <line x1="697" y1="200" x2="794" y2="200" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- TTS ← NegotiationAgent (feedback loop) -->
+  <line x1="794" y1="385" x2="697" y2="385" stroke="#ffdbb188" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+
+  <!-- ══ Col 4 internal ══ -->
+  <!-- NegotiationAgent ↓ PriceIntelligence -->
+  <line x1="888" y1="301" x2="888" y2="340" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- PriceIntelligence ↓ DealClosingAgent -->
+  <line x1="888" y1="473" x2="888" y2="512" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ══ Col 4 → Col 5 ══ -->
+  <!-- NegotiationAgent → SQLite -->
+  <line x1="981" y1="215" x2="1058" y2="215" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- PriceIntelligence → Checkout -->
+  <line x1="981" y1="407" x2="1058" y2="407" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- DealClosingAgent → Response -->
+  <line x1="981" y1="574" x2="1058" y2="574" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ══ Col 5 internal ══ -->
+  <!-- SQLite ↓ Checkout -->
+  <line x1="1140" y1="281" x2="1140" y2="324" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Checkout ↓ Response -->
+  <line x1="1140" y1="457" x2="1140" y2="500" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- FLOATING ARROW LABELS                  -->
+  <!-- ══════════════════════════════════════ -->
+  <rect x="454" y="183" width="78" height="16" rx="4" fill="#590946cc"/>
+  <text x="493" y="195" text-anchor="middle" font-size="9" fill="#ffdbb1" font-weight="600">audio chunks</text>
+
+  <rect x="700" y="183" width="88" height="16" rx="4" fill="#590946cc"/>
+  <text x="744" y="195" text-anchor="middle" font-size="9" fill="#ffdbb1" font-weight="600">Hindi transcript</text>
+
+  <rect x="700" y="363" width="76" height="16" rx="4" fill="#590946cc"/>
+  <text x="738" y="375" text-anchor="middle" font-size="9" fill="#ffdbb1" font-weight="600">WAV audio</text>
+
+  <rect x="990" y="548" width="60" height="16" rx="4" fill="#590946cc"/>
+  <text x="1020" y="560" text-anchor="middle" font-size="9" fill="#ffdbb1" font-weight="600">DEAL signal</text>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- DISCOVERY + LEARNING ROW              -->
+  <!-- ══════════════════════════════════════ -->
+  <line x1="60" y1="680" x2="1320" y2="680" stroke="#ffdbb122" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="690" y="698" text-anchor="middle" font-size="10" fill="#ffdbb188" font-weight="700" letter-spacing="2">DISCOVERY + LEARNING</text>
+
+  <!-- Discovery Agent -->
+  <rect x="180" y="712" width="200" height="130" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="280" cy="738" r="14" fill="#590946" opacity=".15"/>
+  <circle cx="277" cy="735" r="7" fill="none" stroke="#590946" stroke-width="2"/>
+  <line x1="282" y1="740" x2="288" y2="746" stroke="#590946" stroke-width="2"/>
+  <text x="280" y="764" text-anchor="middle" font-size="13" font-weight="800" fill="#590946">Discovery Agent</text>
+  <text x="280" y="780" text-anchor="middle" font-size="10" fill="#590946aa">Voice product search</text>
+  <text x="280" y="796" text-anchor="middle" font-size="10" fill="#590946aa">Shopping list update</text>
+  <text x="280" y="812" text-anchor="middle" font-size="10" fill="#590946aa">Outfit recommendation</text>
+  <text x="280" y="828" text-anchor="middle" font-size="10" fill="#590946aa">Groq tool-calling loop</text>
+
+  <!-- Qdrant -->
+  <rect x="440" y="712" width="200" height="110" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="540" cy="738" r="14" fill="#590946" opacity=".15"/>
+  <text x="534" y="744" font-size="16" font-weight="900" fill="#590946">Q</text>
+  <text x="540" y="764" text-anchor="middle" font-size="13" font-weight="800" fill="#590946">Qdrant</text>
+  <text x="540" y="780" text-anchor="middle" font-size="10" fill="#590946aa">Nebius embeddings</text>
+  <text x="540" y="796" text-anchor="middle" font-size="10" fill="#590946aa">Semantic product search</text>
+  <text x="540" y="812" text-anchor="middle" font-size="10" fill="#590946aa">Vector index · fast retrieval</text>
+
+  <!-- Learning Agent -->
+  <rect x="700" y="712" width="200" height="110" rx="10" fill="#ffdbb1" filter="url(#sh)"/>
+  <circle cx="800" cy="738" r="14" fill="#590946" opacity=".15"/>
+  <path d="M792 736 L800 730 L808 736 L800 742 Z" fill="#590946"/>
+  <path d="M796 739 L796 746 L800 749 L804 746 L804 739" fill="none" stroke="#590946" stroke-width="1.5"/>
+  <text x="800" y="764" text-anchor="middle" font-size="13" font-weight="800" fill="#590946">Learning Agent</text>
+  <text x="800" y="780" text-anchor="middle" font-size="10" fill="#590946aa">Logs deal outcomes</text>
+  <text x="800" y="796" text-anchor="middle" font-size="10" fill="#590946aa">Tactics · persona analysis</text>
+  <text x="800" y="812" text-anchor="middle" font-size="10" fill="#590946aa">Margin saved tracking</text>
+
+  <!-- Discovery row arrows -->
+  <line x1="381" y1="777" x2="438" y2="777" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="641" y1="767" x2="698" y2="767" stroke="#ffdbb1" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- DealClosingAgent ↓ then → LearningAgent (orthogonal) -->
+  <line x1="888" y1="635" x2="888" y2="767" stroke="#ffdbb188" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="888" y1="767" x2="901" y2="767" stroke="#ffdbb188" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- TECH STACK BADGES + FOOTER             -->
+  <!-- ══════════════════════════════════════ -->
+  <line x1="60" y1="870" x2="1320" y2="870" stroke="#ffdbb122" stroke-width="1"/>
+
+  <rect x="60"   y="882" width="100" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="110"  y="897" text-anchor="middle" font-size="10" fill="#590946">Next.js 16</text>
+
+  <rect x="172"  y="882" width="90"  height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="217"  y="897" text-anchor="middle" font-size="10" fill="#590946">FastAPI</text>
+
+  <rect x="274"  y="882" width="130" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="339"  y="897" text-anchor="middle" font-size="10" fill="#590946">Groq Llama 3.3 70B</text>
+
+  <rect x="416"  y="882" width="128" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="480"  y="897" text-anchor="middle" font-size="10" fill="#590946">Sarvam STT / TTS</text>
+
+  <rect x="556"  y="882" width="114" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="613"  y="897" text-anchor="middle" font-size="10" fill="#590946">Tailwind · Framer</text>
+
+  <rect x="682"  y="882" width="90"  height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="727"  y="897" text-anchor="middle" font-size="10" fill="#590946">SQLite ORM</text>
+
+  <rect x="784"  y="882" width="100" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="834"  y="897" text-anchor="middle" font-size="10" fill="#590946">WebSocket</text>
+
+  <rect x="896"  y="882" width="80"  height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="936"  y="897" text-anchor="middle" font-size="10" fill="#590946">Qdrant</text>
+
+  <rect x="988"  y="882" width="138" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="1057" y="897" text-anchor="middle" font-size="10" fill="#590946">Nebius Embeddings</text>
+
+  <rect x="1138" y="882" width="144" height="22" rx="11" fill="#ffdbb115" stroke="#ffdbb155" stroke-width="1"/>
+  <text x="1210" y="897" text-anchor="middle" font-size="10" fill="#590946">MediaRecorder API</text>
+
+  <text x="690" y="940" text-anchor="middle" font-size="10" fill="#ffdbb144" letter-spacing="1">
+    Jugaad · Meesho Hackathon 2026 · mol karo. save karo.
+  </text>
+
+</svg>
