@@ -21,7 +21,7 @@ services:
       sizeGB: 1
     envVars:
       - key: PYTHON_VERSION
-        value: 3.13.3
+        value: 3.12.10
       - key: PYTHONUNBUFFERED
         value: "1"
       - key: GROQ_API_KEY
