@@ -38,7 +38,7 @@ Jugaad is a voice-first shopping app where buyers negotiate prices with an AI sh
 | Buyer app | https://jugaad-omega.vercel.app/ | `bhoomigundecha@gmail.com` | `bhoomi123` |
 | Vendor app | https://jugaad-vendor.vercel.app/ | `rajesh@jugaad.com` | `jugaad123` |
 | Backend API | https://jugaad-backend-qsa7.onrender.com | none needed | none needed |
-| Demo video | **[ADD LINK BEFORE SUBMISSION]** | | |
+| Demo video | https://youtu.be/eGE_AO2wWJk?si=lqKXHCTlozbf6HXv | | |
 | Source code | https://github.com/bhoomigundecha/Jugaad | | |
 
 
