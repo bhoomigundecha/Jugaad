@@ -43,7 +43,7 @@ Jugaad is a voice-first shopping app where buyers negotiate prices with an AI sh
 
 
 ---
-=======
+
 ## The problem
 
 E-commerce brought the bazaar online, but not the experience of shopping in one. The discovery, the deal, and the dialogue make Indian market shopping feel human, and all three are missing.
@@ -116,7 +116,6 @@ Because a sale is a blanket discount, and a negotiation is price discovery. They
 
 ## Architecture
 
-=======
 **The full AI voice negotiation pipeline**, from mic input to closed deal, including the discovery and learning lane:
 
 ![Jugaad AI voice negotiation pipeline](jugaad-ai-pipeline.png)
